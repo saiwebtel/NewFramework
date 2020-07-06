@@ -7,8 +7,8 @@
 	<test name="Test">
     <classes>
       <class name="Exposure.RestAssured.ReminderTests"/>
-      <class name="Exposure.RestAssured.setConsentTest"/>
-      
+      <!--class name="Exposure.RestAssured.setConsentTest"/-->
+      <!--class name="Exposure.RestAssured.WishlistTest"/-->
       	<!--methods-->
 				<!--include name="addReminderWithInterfaceVersion520_BEP14470001"/-->
 		<!--/methods-->
