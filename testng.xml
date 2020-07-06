@@ -11,7 +11,7 @@
       <!--class name="Exposure.RestAssured.WishlistTest"/-->
       	<methods>
 				<include name="addReminderWithInterfaceVersion520_BEP14470001"/>
-		<methods>
+		</methods>
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->
