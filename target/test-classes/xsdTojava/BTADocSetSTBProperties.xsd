@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2009 sp1 (http://www.altova.com) by SDE/SDV/ITE (Belgacom) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:include schemaLocation="BTATypesSTBProperties.xsd"/>
+	<xs:annotation>
+		<xs:documentation>
+				description: Format of the data to be sent by the client to BEP to upsert STB Properties.
+				Applicable for BEP version: BEP 5.4
+				version: 5.4.01
+				date: 2019-04-30
+				author: BB
+				History: 
+				== BB 1.0: Initial version
+					- Handled as a insert or update of the in the body mentioned properties.
+	</xs:documentation>
+	</xs:annotation>
+	<!--START referenced elements -->
+	<!--END referenced elements -->
+	<!--START root element -->
+	<xs:element name="BTA">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="SetSTBPropertiesDoc">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Properties" type="T_STBProperties"/>
+						</xs:sequence>
+					</xs:complexType>
+					<!--START  foreign keys -->
+					<!--END foreign keys  -->
+					<!--START primary keys -->
+					<!--END primary keys -->
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<!--END root element -->
+	<!--START simple types -->
+	<!--END simple types -->
+	<!--START complex types -->
+	<!--END complex types -->
+</xs:schema>

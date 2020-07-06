@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- edited with XMLSpy v2009 sp1 (http://www.altova.com) by SDE/SDV/ITE (Belgacom) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:include schemaLocation="BTATypesCommon.xsd"/>
+	<xs:annotation>
+		<xs:documentation>
+		    description: Schema file for broker response of success
+            Date: 2019-08-13
+            Author: BB
+            History:
+            == BB 5.4-01 : KAF-167, BEP-13268 : Banners contain view feedback codes
+        </xs:documentation>
+	</xs:annotation>	
+	
+	<xs:element name="BTAResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Status">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="Success"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

@@ -1,0 +1,1543 @@
+<html>
+<head>
+<title>TestNG:  Test</title>
+<link href="../testng.css" rel="stylesheet" type="text/css" />
+<link href="../my-testng.css" rel="stylesheet" type="text/css" />
+
+<style type="text/css">
+.log { display: none;} 
+.stack-trace { display: none;} 
+</style>
+<script type="text/javascript">
+<!--
+function flip(e) {
+  current = e.style.display;
+  if (current == 'block') {
+    e.style.display = 'none';
+    return 0;
+  }
+  else {
+    e.style.display = 'block';
+    return 1;
+  }
+}
+
+function toggleBox(szDivId, elem, msg1, msg2)
+{
+  var res = -1;  if (document.getElementById) {
+    res = flip(document.getElementById(szDivId));
+  }
+  else if (document.all) {
+    // this is the way old msie versions work
+    res = flip(document.all[szDivId]);
+  }
+  if(elem) {
+    if(res == 0) elem.innerHTML = msg1; else elem.innerHTML = msg2;
+  }
+
+}
+
+function toggleAllBoxes() {
+  if (document.getElementsByTagName) {
+    d = document.getElementsByTagName('div');
+    for (i = 0; i < d.length; i++) {
+      if (d[i].className == 'log') {
+        flip(d[i]);
+      }
+    }
+  }
+}
+
+// -->
+</script>
+
+</head>
+<body>
+<h2 align='center'>Test</h2><table border='1' align="center">
+<tr>
+<td>Tests passed/Failed/Skipped:</td><td>10/37/0</td>
+</tr><tr>
+<td>Started on:</td><td>Tue Jun 30 12:14:16 IST 2020</td>
+</tr>
+<tr><td>Total time:</td><td>26 seconds (26183 ms)</td>
+</tr><tr>
+<td>Included groups:</td><td></td>
+</tr><tr>
+<td>Excluded groups:</td><td></td>
+</tr>
+</table><p/>
+<small><i>(Hover the method name to see the test class name)</i></small><p/>
+<table width='100%' border='1' class='invocation-failed'>
+<tr><td colspan='4' align='center'><b>FAILED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='Exposure.RestAssured.ReminderTests.addReminderWhenIcorrectChannelExtID_BEP144700017()'><b>addReminderWhenIcorrectChannelExtID_BEP144700017</b><br>Test class: Exposure.RestAssured.ReminderTests</td>
+<td><div><pre>java.lang.AssertionError: expected:&lt;Channel External Id does not exists&gt; but was:&lt;Mandatory parameter is missing. Supported types are MAC, DeviceID, AccountNumber as request parameter or GID as request header.&gt;
+	at Exposure.RestAssured.ReminderTests.addReminderWhenIcorrectChannelExtID_BEP144700017(ReminderTests.java:263)
+... Removed 28 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1835043230", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1835043230'><pre>java.lang.AssertionError: expected:&lt;Channel External Id does not exists&gt; but was:&lt;Mandatory parameter is missing. Supported types are MAC, DeviceID, AccountNumber as request parameter or GID as request header.&gt;
+	at org.testng.Assert.fail(Assert.java:89)
+	at org.testng.Assert.failNotEquals(Assert.java:489)
+	at org.testng.Assert.assertEquals(Assert.java:118)
+	at org.testng.Assert.assertEquals(Assert.java:160)
+	at Exposure.RestAssured.ReminderTests.addReminderWhenIcorrectChannelExtID_BEP144700017(ReminderTests.java:263)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:80)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:702)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:894)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1219)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
+	at org.testng.TestRunner.privateRun(TestRunner.java:768)
+	at org.testng.TestRunner.run(TestRunner.java:617)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:334)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:329)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:291)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:240)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:87)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1188)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1113)
+	at org.testng.TestNG.run(TestNG.java:1025)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:132)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:236)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:81)
+</pre></div></td>
+<td>1</td>
+<td>Exposure.RestAssured.ReminderTests@37911f88</td></tr>
+<tr>
+<td title='Exposure.RestAssured.ReminderTests.addReminderWhenIcorrectSchTrailID_BEP144700016()'><b>addReminderWhenIcorrectSchTrailID_BEP144700016</b><br>Test class: Exposure.RestAssured.ReminderTests</td>
+<td><div><pre>java.lang.AssertionError: expected:&lt;Schedule Trail Id does not exists&gt; but was:&lt;Mandatory parameter is missing. Supported types are MAC, DeviceID, AccountNumber as request parameter or GID as request header.&gt;
+	at Exposure.RestAssured.ReminderTests.addReminderWhenIcorrectSchTrailID_BEP144700016(ReminderTests.java:252)
+... Removed 28 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace621014131", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace621014131'><pre>java.lang.AssertionError: expected:&lt;Schedule Trail Id does not exists&gt; but was:&lt;Mandatory parameter is missing. Supported types are MAC, DeviceID, AccountNumber as request parameter or GID as request header.&gt;
+	at org.testng.Assert.fail(Assert.java:89)
+	at org.testng.Assert.failNotEquals(Assert.java:489)
+	at org.testng.Assert.assertEquals(Assert.java:118)
+	at org.testng.Assert.assertEquals(Assert.java:160)
+	at Exposure.RestAssured.ReminderTests.addReminderWhenIcorrectSchTrailID_BEP144700016(ReminderTests.java:252)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:80)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:702)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:894)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1219)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
+	at org.testng.TestRunner.privateRun(TestRunner.java:768)
+	at org.testng.TestRunner.run(TestRunner.java:617)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:334)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:329)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:291)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:240)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:87)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1188)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1113)
+	at org.testng.TestNG.run(TestNG.java:1025)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:132)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:236)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:81)
+</pre></div></td>
+<td>1</td>
+<td>Exposure.RestAssured.ReminderTests@37911f88</td></tr>
+<tr>
+<td title='Exposure.RestAssured.ReminderTests.addReminderWhenMinsBeforeStartIsnotCorrect_BEP144700018()'><b>addReminderWhenMinsBeforeStartIsnotCorrect_BEP144700018</b><br>Test class: Exposure.RestAssured.ReminderTests</td>
+<td><div><pre>java.lang.AssertionError: expected:&lt;Mins Before Start value should be between 0 and 99&gt; but was:&lt;Mandatory parameter is missing. Supported types are MAC, DeviceID, AccountNumber as request parameter or GID as request header.&gt;
+	at Exposure.RestAssured.ReminderTests.addReminderWhenMinsBeforeStartIsnotCorrect_BEP144700018(ReminderTests.java:275)
+... Removed 28 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace858507952", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace858507952'><pre>java.lang.AssertionError: expected:&lt;Mins Before Start value should be between 0 and 99&gt; but was:&lt;Mandatory parameter is missing. Supported types are MAC, DeviceID, AccountNumber as request parameter or GID as request header.&gt;
+	at org.testng.Assert.fail(Assert.java:89)
+	at org.testng.Assert.failNotEquals(Assert.java:489)
+	at org.testng.Assert.assertEquals(Assert.java:118)
+	at org.testng.Assert.assertEquals(Assert.java:160)
+	at Exposure.RestAssured.ReminderTests.addReminderWhenMinsBeforeStartIsnotCorrect_BEP144700018(ReminderTests.java:275)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:80)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:702)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:894)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1219)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
+	at org.testng.TestRunner.privateRun(TestRunner.java:768)
+	at org.testng.TestRunner.run(TestRunner.java:617)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:334)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:329)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:291)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:240)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:87)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1188)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1113)
+	at org.testng.TestNG.run(TestNG.java:1025)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:132)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:236)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:81)
+</pre></div></td>
+<td>0</td>
+<td>Exposure.RestAssured.ReminderTests@37911f88</td></tr>
+<tr>
+<td title='Exposure.RestAssured.ReminderTests.addReminderWithBlankValueForChannelExtID_BEP144700013()'><b>addReminderWithBlankValueForChannelExtID_BEP144700013</b><br>Test class: Exposure.RestAssured.ReminderTests</td>
+<td><div><pre>java.lang.AssertionError: expected:&lt;Channel External Id tag is either missing/empty&gt; but was:&lt;Mandatory parameter is missing. Supported types are MAC, DeviceID, AccountNumber as request parameter or GID as request header.&gt;
+	at Exposure.RestAssured.ReminderTests.addReminderWithBlankValueForChannelExtID_BEP144700013(ReminderTests.java:229)
+... Removed 28 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1678422332", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1678422332'><pre>java.lang.AssertionError: expected:&lt;Channel External Id tag is either missing/empty&gt; but was:&lt;Mandatory parameter is missing. Supported types are MAC, DeviceID, AccountNumber as request parameter or GID as request header.&gt;
+	at org.testng.Assert.fail(Assert.java:89)
+	at org.testng.Assert.failNotEquals(Assert.java:489)
+	at org.testng.Assert.assertEquals(Assert.java:118)
+	at org.testng.Assert.assertEquals(Assert.java:160)
+	at Exposure.RestAssured.ReminderTests.addReminderWithBlankValueForChannelExtID_BEP144700013(ReminderTests.java:229)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:80)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:702)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:894)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1219)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
+	at org.testng.TestRunner.privateRun(TestRunner.java:768)
+	at org.testng.TestRunner.run(TestRunner.java:617)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:334)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:329)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:291)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:240)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:87)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1188)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1113)
+	at org.testng.TestNG.run(TestNG.java:1025)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:132)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:236)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:81)
+</pre></div></td>
+<td>0</td>
+<td>Exposure.RestAssured.ReminderTests@37911f88</td></tr>
+<tr>
+<td title='Exposure.RestAssured.ReminderTests.addReminderWithBlankValueForReminderType_BEP14470007()'><b>addReminderWithBlankValueForReminderType_BEP14470007</b><br>Test class: Exposure.RestAssured.ReminderTests</td>
+<td><div><pre>java.lang.AssertionError: expected:&lt;Reminder Type tag is either missing or empty&gt; but was:&lt;Mandatory parameter is missing. Supported types are MAC, DeviceID, AccountNumber as request parameter or GID as request header.&gt;
+	at Exposure.RestAssured.ReminderTests.addReminderWithBlankValueForReminderType_BEP14470007(ReminderTests.java:162)
+... Removed 28 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace707892422", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace707892422'><pre>java.lang.AssertionError: expected:&lt;Reminder Type tag is either missing or empty&gt; but was:&lt;Mandatory parameter is missing. Supported types are MAC, DeviceID, AccountNumber as request parameter or GID as request header.&gt;
+	at org.testng.Assert.fail(Assert.java:89)
+	at org.testng.Assert.failNotEquals(Assert.java:489)
+	at org.testng.Assert.assertEquals(Assert.java:118)
+	at org.testng.Assert.assertEquals(Assert.java:160)
+	at Exposure.RestAssured.ReminderTests.addReminderWithBlankValueForReminderType_BEP14470007(ReminderTests.java:162)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:80)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:702)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:894)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1219)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
+	at org.testng.TestRunner.privateRun(TestRunner.java:768)
+	at org.testng.TestRunner.run(TestRunner.java:617)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:334)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:329)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:291)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:240)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:87)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1188)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1113)
+	at org.testng.TestNG.run(TestNG.java:1025)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:132)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:236)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:81)
+</pre></div></td>
+<td>0</td>
+<td>Exposure.RestAssured.ReminderTests@37911f88</td></tr>
+<tr>
+<td title='Exposure.RestAssured.ReminderTests.addReminderWithBlankValueForSchTrailID_BEP144700011()'><b>addReminderWithBlankValueForSchTrailID_BEP144700011</b><br>Test class: Exposure.RestAssured.ReminderTests</td>
+<td><div><pre>java.lang.AssertionError: expected:&lt;Schedule Trail Id tag is either missing/empty/incorrect&gt; but was:&lt;Mandatory parameter is missing. Supported types are MAC, DeviceID, AccountNumber as request parameter or GID as request header.&gt;
+	at Exposure.RestAssured.ReminderTests.addReminderWithBlankValueForSchTrailID_BEP144700011(ReminderTests.java:207)
+... Removed 28 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1966787205", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1966787205'><pre>java.lang.AssertionError: expected:&lt;Schedule Trail Id tag is either missing/empty/incorrect&gt; but was:&lt;Mandatory parameter is missing. Supported types are MAC, DeviceID, AccountNumber as request parameter or GID as request header.&gt;
+	at org.testng.Assert.fail(Assert.java:89)
+	at org.testng.Assert.failNotEquals(Assert.java:489)
+	at org.testng.Assert.assertEquals(Assert.java:118)
+	at org.testng.Assert.assertEquals(Assert.java:160)
+	at Exposure.RestAssured.ReminderTests.addReminderWithBlankValueForSchTrailID_BEP144700011(ReminderTests.java:207)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:80)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:702)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:894)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1219)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
+	at org.testng.TestRunner.privateRun(TestRunner.java:768)
+	at org.testng.TestRunner.run(TestRunner.java:617)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:334)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:329)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:291)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:240)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:87)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1188)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1113)
+	at org.testng.TestNG.run(TestNG.java:1025)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:132)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:236)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:81)
+</pre></div></td>
+<td>0</td>
+<td>Exposure.RestAssured.ReminderTests@37911f88</td></tr>
+<tr>
+<td title='Exposure.RestAssured.ReminderTests.addReminderWithBlankValueforMinsBeforeStart_BEP14470009()'><b>addReminderWithBlankValueforMinsBeforeStart_BEP14470009</b><br>Test class: Exposure.RestAssured.ReminderTests</td>
+<td><div><pre>java.lang.AssertionError: expected:&lt;Mins Before Start tag is either missing/empty/incorrect&gt; but was:&lt;Mandatory parameter is missing. Supported types are MAC, DeviceID, AccountNumber as request parameter or GID as request header.&gt;
+	at Exposure.RestAssured.ReminderTests.addReminderWithBlankValueforMinsBeforeStart_BEP14470009(ReminderTests.java:185)
+... Removed 28 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1175662879", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1175662879'><pre>java.lang.AssertionError: expected:&lt;Mins Before Start tag is either missing/empty/incorrect&gt; but was:&lt;Mandatory parameter is missing. Supported types are MAC, DeviceID, AccountNumber as request parameter or GID as request header.&gt;
+	at org.testng.Assert.fail(Assert.java:89)
+	at org.testng.Assert.failNotEquals(Assert.java:489)
+	at org.testng.Assert.assertEquals(Assert.java:118)
+	at org.testng.Assert.assertEquals(Assert.java:160)
+	at Exposure.RestAssured.ReminderTests.addReminderWithBlankValueforMinsBeforeStart_BEP14470009(ReminderTests.java:185)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:80)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:702)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:894)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1219)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
+	at org.testng.TestRunner.privateRun(TestRunner.java:768)
+	at org.testng.TestRunner.run(TestRunner.java:617)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:334)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:329)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:291)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:240)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:87)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1188)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1113)
+	at org.testng.TestNG.run(TestNG.java:1025)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:132)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:236)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:81)
+</pre></div></td>
+<td>0</td>
+<td>Exposure.RestAssured.ReminderTests@37911f88</td></tr>
+<tr>
+<td title='Exposure.RestAssured.ReminderTests.addReminderWithInterfaceVersion420_BEP14470004()'><b>addReminderWithInterfaceVersion420_BEP14470004</b><br>Test class: Exposure.RestAssured.ReminderTests</td>
+<td><div><pre>java.lang.AssertionError: expected:&lt;null&gt; but was:&lt;&gt;
+	at Exposure.RestAssured.ReminderTests.addReminderWithInterfaceVersion420_BEP14470004(ReminderTests.java:107)
+... Removed 28 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace772147225", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace772147225'><pre>java.lang.AssertionError: expected:&lt;null&gt; but was:&lt;&gt;
+	at org.testng.Assert.fail(Assert.java:89)
+	at org.testng.Assert.failNotEquals(Assert.java:489)
+	at org.testng.Assert.assertEquals(Assert.java:118)
+	at org.testng.Assert.assertEquals(Assert.java:160)
+	at Exposure.RestAssured.ReminderTests.addReminderWithInterfaceVersion420_BEP14470004(ReminderTests.java:107)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:80)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:702)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:894)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1219)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
+	at org.testng.TestRunner.privateRun(TestRunner.java:768)
+	at org.testng.TestRunner.run(TestRunner.java:617)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:334)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:329)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:291)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:240)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:87)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1188)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1113)
+	at org.testng.TestNG.run(TestNG.java:1025)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:132)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:236)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:81)
+</pre></div></td>
+<td>1</td>
+<td>Exposure.RestAssured.ReminderTests@37911f88</td></tr>
+<tr>
+<td title='Exposure.RestAssured.ReminderTests.addReminderWithInterfaceVersion520_BEP14470001()'><b>addReminderWithInterfaceVersion520_BEP14470001</b><br>Test class: Exposure.RestAssured.ReminderTests</td>
+<td><div><pre>java.lang.AssertionError: expected:&lt;null&gt; but was:&lt;&gt;
+	at Exposure.RestAssured.ReminderTests.addReminderWithInterfaceVersion520_BEP14470001(ReminderTests.java:94)
+... Removed 28 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1389808948", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1389808948'><pre>java.lang.AssertionError: expected:&lt;null&gt; but was:&lt;&gt;
+	at org.testng.Assert.fail(Assert.java:89)
+	at org.testng.Assert.failNotEquals(Assert.java:489)
+	at org.testng.Assert.assertEquals(Assert.java:118)
+	at org.testng.Assert.assertEquals(Assert.java:160)
+	at Exposure.RestAssured.ReminderTests.addReminderWithInterfaceVersion520_BEP14470001(ReminderTests.java:94)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:80)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:702)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:894)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1219)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
+	at org.testng.TestRunner.privateRun(TestRunner.java:768)
+	at org.testng.TestRunner.run(TestRunner.java:617)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:334)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:329)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:291)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:240)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:87)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1188)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1113)
+	at org.testng.TestNG.run(TestNG.java:1025)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:132)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:236)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:81)
+</pre></div></td>
+<td>2</td>
+<td>Exposure.RestAssured.ReminderTests@37911f88</td></tr>
+<tr>
+<td title='Exposure.RestAssured.ReminderTests.addReminderWithInterfaceVersionLessThan420_BEP14470003()'><b>addReminderWithInterfaceVersionLessThan420_BEP14470003</b><br>Test class: Exposure.RestAssured.ReminderTests</td>
+<td><div><pre>java.lang.AssertionError: expected:&lt;Invalid Interface version&gt; but was:&lt;Mandatory parameter is missing. Supported types are MAC, DeviceID, AccountNumber as request parameter or GID as request header.&gt;
+	at Exposure.RestAssured.ReminderTests.addReminderWithInterfaceVersionLessThan420_BEP14470003(ReminderTests.java:128)
+... Removed 28 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1762378078", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1762378078'><pre>java.lang.AssertionError: expected:&lt;Invalid Interface version&gt; but was:&lt;Mandatory parameter is missing. Supported types are MAC, DeviceID, AccountNumber as request parameter or GID as request header.&gt;
+	at org.testng.Assert.fail(Assert.java:89)
+	at org.testng.Assert.failNotEquals(Assert.java:489)
+	at org.testng.Assert.assertEquals(Assert.java:118)
+	at org.testng.Assert.assertEquals(Assert.java:160)
+	at Exposure.RestAssured.ReminderTests.addReminderWithInterfaceVersionLessThan420_BEP14470003(ReminderTests.java:128)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:80)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:702)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:894)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1219)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
+	at org.testng.TestRunner.privateRun(TestRunner.java:768)
+	at org.testng.TestRunner.run(TestRunner.java:617)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:334)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:329)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:291)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:240)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:87)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1188)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1113)
+	at org.testng.TestNG.run(TestNG.java:1025)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:132)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:236)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:81)
+</pre></div></td>
+<td>0</td>
+<td>Exposure.RestAssured.ReminderTests@37911f88</td></tr>
+<tr>
+<td title='Exposure.RestAssured.ReminderTests.addReminderWithoutChannelExtID_BEP144700014()'><b>addReminderWithoutChannelExtID_BEP144700014</b><br>Test class: Exposure.RestAssured.ReminderTests</td>
+<td><div><pre>java.lang.AssertionError: expected:&lt;Channel External Id tag is either missing/empty&gt; but was:&lt;Mandatory parameter is missing. Supported types are MAC, DeviceID, AccountNumber as request parameter or GID as request header.&gt;
+	at Exposure.RestAssured.ReminderTests.addReminderWithoutChannelExtID_BEP144700014(ReminderTests.java:241)
+... Removed 28 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1775383190", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1775383190'><pre>java.lang.AssertionError: expected:&lt;Channel External Id tag is either missing/empty&gt; but was:&lt;Mandatory parameter is missing. Supported types are MAC, DeviceID, AccountNumber as request parameter or GID as request header.&gt;
+	at org.testng.Assert.fail(Assert.java:89)
+	at org.testng.Assert.failNotEquals(Assert.java:489)
+	at org.testng.Assert.assertEquals(Assert.java:118)
+	at org.testng.Assert.assertEquals(Assert.java:160)
+	at Exposure.RestAssured.ReminderTests.addReminderWithoutChannelExtID_BEP144700014(ReminderTests.java:241)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:80)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:702)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:894)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1219)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
+	at org.testng.TestRunner.privateRun(TestRunner.java:768)
+	at org.testng.TestRunner.run(TestRunner.java:617)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:334)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:329)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:291)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:240)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:87)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1188)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1113)
+	at org.testng.TestNG.run(TestNG.java:1025)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:132)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:236)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:81)
+</pre></div></td>
+<td>0</td>
+<td>Exposure.RestAssured.ReminderTests@37911f88</td></tr>
+<tr>
+<td title='Exposure.RestAssured.ReminderTests.addReminderWithoutInterfaceVersion_BEP14470002()'><b>addReminderWithoutInterfaceVersion_BEP14470002</b><br>Test class: Exposure.RestAssured.ReminderTests</td>
+<td><div><pre>java.lang.AssertionError: expected:&lt;Mandatory Parameter Interface Version missing&gt; but was:&lt;InterfaceVersion missing.&gt;
+	at Exposure.RestAssured.ReminderTests.addReminderWithoutInterfaceVersion_BEP14470002(ReminderTests.java:118)
+... Removed 28 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1037572328", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1037572328'><pre>java.lang.AssertionError: expected:&lt;Mandatory Parameter Interface Version missing&gt; but was:&lt;InterfaceVersion missing.&gt;
+	at org.testng.Assert.fail(Assert.java:89)
+	at org.testng.Assert.failNotEquals(Assert.java:489)
+	at org.testng.Assert.assertEquals(Assert.java:118)
+	at org.testng.Assert.assertEquals(Assert.java:160)
+	at Exposure.RestAssured.ReminderTests.addReminderWithoutInterfaceVersion_BEP14470002(ReminderTests.java:118)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:80)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:702)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:894)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1219)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
+	at org.testng.TestRunner.privateRun(TestRunner.java:768)
+	at org.testng.TestRunner.run(TestRunner.java:617)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:334)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:329)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:291)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:240)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:87)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1188)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1113)
+	at org.testng.TestNG.run(TestNG.java:1025)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:132)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:236)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:81)
+</pre></div></td>
+<td>0</td>
+<td>Exposure.RestAssured.ReminderTests@37911f88</td></tr>
+<tr>
+<td title='Exposure.RestAssured.ReminderTests.addReminderWithoutMinsBeforeStartTag_BEP144700010()'><b>addReminderWithoutMinsBeforeStartTag_BEP144700010</b><br>Test class: Exposure.RestAssured.ReminderTests</td>
+<td><div><pre>java.lang.AssertionError: expected:&lt;Mins Before Start tag is either missing/empty/incorrect&gt; but was:&lt;Mandatory parameter is missing. Supported types are MAC, DeviceID, AccountNumber as request parameter or GID as request header.&gt;
+	at Exposure.RestAssured.ReminderTests.addReminderWithoutMinsBeforeStartTag_BEP144700010(ReminderTests.java:196)
+... Removed 28 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1304065853", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1304065853'><pre>java.lang.AssertionError: expected:&lt;Mins Before Start tag is either missing/empty/incorrect&gt; but was:&lt;Mandatory parameter is missing. Supported types are MAC, DeviceID, AccountNumber as request parameter or GID as request header.&gt;
+	at org.testng.Assert.fail(Assert.java:89)
+	at org.testng.Assert.failNotEquals(Assert.java:489)
+	at org.testng.Assert.assertEquals(Assert.java:118)
+	at org.testng.Assert.assertEquals(Assert.java:160)
+	at Exposure.RestAssured.ReminderTests.addReminderWithoutMinsBeforeStartTag_BEP144700010(ReminderTests.java:196)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:80)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:702)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:894)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1219)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
+	at org.testng.TestRunner.privateRun(TestRunner.java:768)
+	at org.testng.TestRunner.run(TestRunner.java:617)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:334)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:329)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:291)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:240)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:87)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1188)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1113)
+	at org.testng.TestNG.run(TestNG.java:1025)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:132)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:236)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:81)
+</pre></div></td>
+<td>0</td>
+<td>Exposure.RestAssured.ReminderTests@37911f88</td></tr>
+<tr>
+<td title='Exposure.RestAssured.ReminderTests.addReminderWithoutReminderTag_BEP14470008()'><b>addReminderWithoutReminderTag_BEP14470008</b><br>Test class: Exposure.RestAssured.ReminderTests</td>
+<td><div><pre>java.lang.AssertionError: expected:&lt;Reminder Type tag is either missing or empty&gt; but was:&lt;Mandatory parameter is missing. Supported types are MAC, DeviceID, AccountNumber as request parameter or GID as request header.&gt;
+	at Exposure.RestAssured.ReminderTests.addReminderWithoutReminderTag_BEP14470008(ReminderTests.java:174)
+... Removed 28 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace2004305265", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace2004305265'><pre>java.lang.AssertionError: expected:&lt;Reminder Type tag is either missing or empty&gt; but was:&lt;Mandatory parameter is missing. Supported types are MAC, DeviceID, AccountNumber as request parameter or GID as request header.&gt;
+	at org.testng.Assert.fail(Assert.java:89)
+	at org.testng.Assert.failNotEquals(Assert.java:489)
+	at org.testng.Assert.assertEquals(Assert.java:118)
+	at org.testng.Assert.assertEquals(Assert.java:160)
+	at Exposure.RestAssured.ReminderTests.addReminderWithoutReminderTag_BEP14470008(ReminderTests.java:174)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:80)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:702)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:894)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1219)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
+	at org.testng.TestRunner.privateRun(TestRunner.java:768)
+	at org.testng.TestRunner.run(TestRunner.java:617)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:334)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:329)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:291)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:240)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:87)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1188)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1113)
+	at org.testng.TestNG.run(TestNG.java:1025)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:132)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:236)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:81)
+</pre></div></td>
+<td>0</td>
+<td>Exposure.RestAssured.ReminderTests@37911f88</td></tr>
+<tr>
+<td title='Exposure.RestAssured.ReminderTests.addReminderWithoutSchTrailIDTag_BEP144700012()'><b>addReminderWithoutSchTrailIDTag_BEP144700012</b><br>Test class: Exposure.RestAssured.ReminderTests</td>
+<td><div><pre>java.lang.AssertionError: expected:&lt;Schedule Trail Id tag is either missing/empty/incorrect&gt; but was:&lt;Mandatory parameter is missing. Supported types are MAC, DeviceID, AccountNumber as request parameter or GID as request header.&gt;
+	at Exposure.RestAssured.ReminderTests.addReminderWithoutSchTrailIDTag_BEP144700012(ReminderTests.java:218)
+... Removed 28 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1257526338", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1257526338'><pre>java.lang.AssertionError: expected:&lt;Schedule Trail Id tag is either missing/empty/incorrect&gt; but was:&lt;Mandatory parameter is missing. Supported types are MAC, DeviceID, AccountNumber as request parameter or GID as request header.&gt;
+	at org.testng.Assert.fail(Assert.java:89)
+	at org.testng.Assert.failNotEquals(Assert.java:489)
+	at org.testng.Assert.assertEquals(Assert.java:118)
+	at org.testng.Assert.assertEquals(Assert.java:160)
+	at Exposure.RestAssured.ReminderTests.addReminderWithoutSchTrailIDTag_BEP144700012(ReminderTests.java:218)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:80)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:702)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:894)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1219)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
+	at org.testng.TestRunner.privateRun(TestRunner.java:768)
+	at org.testng.TestRunner.run(TestRunner.java:617)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:334)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:329)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:291)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:240)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:87)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1188)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1113)
+	at org.testng.TestNG.run(TestNG.java:1025)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:132)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:236)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:81)
+</pre></div></td>
+<td>0</td>
+<td>Exposure.RestAssured.ReminderTests@37911f88</td></tr>
+<tr>
+<td title='Exposure.RestAssured.ReminderTests.getReminderBTACall_BEP14477001()'><b>getReminderBTACall_BEP14477001</b><br>Test class: Exposure.RestAssured.ReminderTests</td>
+<td><div><pre>java.lang.AssertionError: expected:&lt;null&gt; but was:&lt;&gt;
+	at Exposure.RestAssured.ReminderTests.getReminderBTACall_BEP14477001(ReminderTests.java:290)
+... Removed 28 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace533140425", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace533140425'><pre>java.lang.AssertionError: expected:&lt;null&gt; but was:&lt;&gt;
+	at org.testng.Assert.fail(Assert.java:89)
+	at org.testng.Assert.failNotEquals(Assert.java:489)
+	at org.testng.Assert.assertEquals(Assert.java:118)
+	at org.testng.Assert.assertEquals(Assert.java:160)
+	at Exposure.RestAssured.ReminderTests.getReminderBTACall_BEP14477001(ReminderTests.java:290)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:80)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:702)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:894)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1219)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
+	at org.testng.TestRunner.privateRun(TestRunner.java:768)
+	at org.testng.TestRunner.run(TestRunner.java:617)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:334)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:329)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:291)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:240)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:87)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1188)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1113)
+	at org.testng.TestNG.run(TestNG.java:1025)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:132)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:236)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:81)
+</pre></div></td>
+<td>0</td>
+<td>Exposure.RestAssured.ReminderTests@37911f88</td></tr>
+<tr>
+<td title='Exposure.RestAssured.ReminderTests.getReminderBTACall_BEP14477002()'><b>getReminderBTACall_BEP14477002</b><br>Test class: Exposure.RestAssured.ReminderTests</td>
+<td><div><pre>java.lang.AssertionError: expected:&lt;Mandatory Parameter Interface Version missing&gt; but was:&lt;InterfaceVersion missing.&gt;
+	at Exposure.RestAssured.ReminderTests.getReminderBTACall_BEP14477002(ReminderTests.java:304)
+... Removed 28 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace131532344", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace131532344'><pre>java.lang.AssertionError: expected:&lt;Mandatory Parameter Interface Version missing&gt; but was:&lt;InterfaceVersion missing.&gt;
+	at org.testng.Assert.fail(Assert.java:89)
+	at org.testng.Assert.failNotEquals(Assert.java:489)
+	at org.testng.Assert.assertEquals(Assert.java:118)
+	at org.testng.Assert.assertEquals(Assert.java:160)
+	at Exposure.RestAssured.ReminderTests.getReminderBTACall_BEP14477002(ReminderTests.java:304)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:80)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:702)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:894)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1219)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
+	at org.testng.TestRunner.privateRun(TestRunner.java:768)
+	at org.testng.TestRunner.run(TestRunner.java:617)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:334)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:329)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:291)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:240)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:87)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1188)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1113)
+	at org.testng.TestNG.run(TestNG.java:1025)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:132)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:236)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:81)
+</pre></div></td>
+<td>0</td>
+<td>Exposure.RestAssured.ReminderTests@37911f88</td></tr>
+<tr>
+<td title='Exposure.RestAssured.ReminderTests.getReminderBTACall_BEP14477003()'><b>getReminderBTACall_BEP14477003</b><br>Test class: Exposure.RestAssured.ReminderTests</td>
+<td><div><pre>java.lang.AssertionError: expected:&lt;Invalid Interface version&gt; but was:&lt;Mandatory parameter is missing. Supported types are MAC, DeviceID, AccountNumber as request parameter or GID as request header.&gt;
+	at Exposure.RestAssured.ReminderTests.getReminderBTACall_BEP14477003(ReminderTests.java:319)
+... Removed 28 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1917555614", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1917555614'><pre>java.lang.AssertionError: expected:&lt;Invalid Interface version&gt; but was:&lt;Mandatory parameter is missing. Supported types are MAC, DeviceID, AccountNumber as request parameter or GID as request header.&gt;
+	at org.testng.Assert.fail(Assert.java:89)
+	at org.testng.Assert.failNotEquals(Assert.java:489)
+	at org.testng.Assert.assertEquals(Assert.java:118)
+	at org.testng.Assert.assertEquals(Assert.java:160)
+	at Exposure.RestAssured.ReminderTests.getReminderBTACall_BEP14477003(ReminderTests.java:319)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:80)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:702)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:894)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1219)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
+	at org.testng.TestRunner.privateRun(TestRunner.java:768)
+	at org.testng.TestRunner.run(TestRunner.java:617)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:334)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:329)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:291)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:240)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:87)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1188)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1113)
+	at org.testng.TestNG.run(TestNG.java:1025)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:132)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:236)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:81)
+</pre></div></td>
+<td>0</td>
+<td>Exposure.RestAssured.ReminderTests@37911f88</td></tr>
+<tr>
+<td title='Exposure.RestAssured.ReminderTests.updateReminderWhenIcorrectChannelExtID_BEP144710019()'><b>updateReminderWhenIcorrectChannelExtID_BEP144710019</b><br>Test class: Exposure.RestAssured.ReminderTests</td>
+<td><div><pre>java.lang.NullPointerException
+	at base.Testbase.executeSelectQuery(Testbase.java:209)
+	at testData.TestDataCreation.createPOSTBodyForReminder(TestDataCreation.java:68)
+	at Exposure.RestAssured.ReminderTests.updateReminderWhenIcorrectChannelExtID_BEP144710019(ReminderTests.java:555)
+... Removed 24 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace518290846", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace518290846'><pre>java.lang.NullPointerException
+	at base.Testbase.executeSelectQuery(Testbase.java:209)
+	at testData.TestDataCreation.createPOSTBodyForReminder(TestDataCreation.java:68)
+	at Exposure.RestAssured.ReminderTests.updateReminderWhenIcorrectChannelExtID_BEP144710019(ReminderTests.java:555)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:80)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:702)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:894)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1219)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
+	at org.testng.TestRunner.privateRun(TestRunner.java:768)
+	at org.testng.TestRunner.run(TestRunner.java:617)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:334)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:329)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:291)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:240)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:87)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1188)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1113)
+	at org.testng.TestNG.run(TestNG.java:1025)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:132)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:236)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:81)
+</pre></div></td>
+<td>0</td>
+<td>Exposure.RestAssured.ReminderTests@37911f88</td></tr>
+<tr>
+<td title='Exposure.RestAssured.ReminderTests.updateReminderWhenIcorrectSchTrailID_BEP144710018()'><b>updateReminderWhenIcorrectSchTrailID_BEP144710018</b><br>Test class: Exposure.RestAssured.ReminderTests</td>
+<td><div><pre>java.lang.NullPointerException
+	at base.Testbase.executeSelectQuery(Testbase.java:209)
+	at testData.TestDataCreation.createPOSTBodyForReminder(TestDataCreation.java:68)
+	at Exposure.RestAssured.ReminderTests.updateReminderWhenIcorrectSchTrailID_BEP144710018(ReminderTests.java:543)
+... Removed 24 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace2034460325", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace2034460325'><pre>java.lang.NullPointerException
+	at base.Testbase.executeSelectQuery(Testbase.java:209)
+	at testData.TestDataCreation.createPOSTBodyForReminder(TestDataCreation.java:68)
+	at Exposure.RestAssured.ReminderTests.updateReminderWhenIcorrectSchTrailID_BEP144710018(ReminderTests.java:543)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:80)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:702)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:894)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1219)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
+	at org.testng.TestRunner.privateRun(TestRunner.java:768)
+	at org.testng.TestRunner.run(TestRunner.java:617)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:334)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:329)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:291)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:240)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:87)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1188)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1113)
+	at org.testng.TestNG.run(TestNG.java:1025)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:132)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:236)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:81)
+</pre></div></td>
+<td>0</td>
+<td>Exposure.RestAssured.ReminderTests@37911f88</td></tr>
+<tr>
+<td title='Exposure.RestAssured.ReminderTests.updateReminderWhenIcorrectSchTrailID_BEP144710021()'><b>updateReminderWhenIcorrectSchTrailID_BEP144710021</b><br>Test class: Exposure.RestAssured.ReminderTests</td>
+<td><div><pre>java.lang.NullPointerException
+	at base.Testbase.executeSelectQuery(Testbase.java:209)
+	at testData.TestDataCreation.createPOSTBodyForReminder(TestDataCreation.java:68)
+	at Exposure.RestAssured.ReminderTests.updateReminderWhenIcorrectSchTrailID_BEP144710021(ReminderTests.java:579)
+... Removed 24 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace805561728", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace805561728'><pre>java.lang.NullPointerException
+	at base.Testbase.executeSelectQuery(Testbase.java:209)
+	at testData.TestDataCreation.createPOSTBodyForReminder(TestDataCreation.java:68)
+	at Exposure.RestAssured.ReminderTests.updateReminderWhenIcorrectSchTrailID_BEP144710021(ReminderTests.java:579)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:80)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:702)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:894)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1219)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
+	at org.testng.TestRunner.privateRun(TestRunner.java:768)
+	at org.testng.TestRunner.run(TestRunner.java:617)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:334)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:329)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:291)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:240)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:87)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1188)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1113)
+	at org.testng.TestNG.run(TestNG.java:1025)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:132)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:236)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:81)
+</pre></div></td>
+<td>0</td>
+<td>Exposure.RestAssured.ReminderTests@37911f88</td></tr>
+<tr>
+<td title='Exposure.RestAssured.ReminderTests.updateReminderWhenInterfaceVersionLessThen420_BEP14471003()'><b>updateReminderWhenInterfaceVersionLessThen420_BEP14471003</b><br>Test class: Exposure.RestAssured.ReminderTests</td>
+<td><div><pre>java.lang.NullPointerException
+	at base.Testbase.executeSelectQuery(Testbase.java:209)
+	at testData.TestDataCreation.createPOSTBodyForReminder(TestDataCreation.java:68)
+	at Exposure.RestAssured.ReminderTests.updateReminderWhenInterfaceVersionLessThen420_BEP14471003(ReminderTests.java:387)
+... Removed 24 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace158995547", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace158995547'><pre>java.lang.NullPointerException
+	at base.Testbase.executeSelectQuery(Testbase.java:209)
+	at testData.TestDataCreation.createPOSTBodyForReminder(TestDataCreation.java:68)
+	at Exposure.RestAssured.ReminderTests.updateReminderWhenInterfaceVersionLessThen420_BEP14471003(ReminderTests.java:387)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:80)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:702)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:894)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1219)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
+	at org.testng.TestRunner.privateRun(TestRunner.java:768)
+	at org.testng.TestRunner.run(TestRunner.java:617)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:334)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:329)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:291)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:240)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:87)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1188)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1113)
+	at org.testng.TestNG.run(TestNG.java:1025)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:132)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:236)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:81)
+</pre></div></td>
+<td>0</td>
+<td>Exposure.RestAssured.ReminderTests@37911f88</td></tr>
+<tr>
+<td title='Exposure.RestAssured.ReminderTests.updateReminderWhenMinsBeforeStartIsnotCorrect_BEP144710020()'><b>updateReminderWhenMinsBeforeStartIsnotCorrect_BEP144710020</b><br>Test class: Exposure.RestAssured.ReminderTests</td>
+<td><div><pre>java.lang.NullPointerException
+	at base.Testbase.executeSelectQuery(Testbase.java:209)
+	at testData.TestDataCreation.createPOSTBodyForReminder(TestDataCreation.java:68)
+	at Exposure.RestAssured.ReminderTests.updateReminderWhenMinsBeforeStartIsnotCorrect_BEP144710020(ReminderTests.java:567)
+... Removed 24 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace333180318", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace333180318'><pre>java.lang.NullPointerException
+	at base.Testbase.executeSelectQuery(Testbase.java:209)
+	at testData.TestDataCreation.createPOSTBodyForReminder(TestDataCreation.java:68)
+	at Exposure.RestAssured.ReminderTests.updateReminderWhenMinsBeforeStartIsnotCorrect_BEP144710020(ReminderTests.java:567)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:80)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:702)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:894)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1219)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
+	at org.testng.TestRunner.privateRun(TestRunner.java:768)
+	at org.testng.TestRunner.run(TestRunner.java:617)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:334)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:329)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:291)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:240)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:87)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1188)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1113)
+	at org.testng.TestNG.run(TestNG.java:1025)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:132)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:236)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:81)
+</pre></div></td>
+<td>0</td>
+<td>Exposure.RestAssured.ReminderTests@37911f88</td></tr>
+<tr>
+<td title='Exposure.RestAssured.ReminderTests.updateReminderWithBlankValueForChannelExtID_BEP144710014()'><b>updateReminderWithBlankValueForChannelExtID_BEP144710014</b><br>Test class: Exposure.RestAssured.ReminderTests</td>
+<td><div><pre>java.lang.NullPointerException
+	at base.Testbase.executeSelectQuery(Testbase.java:209)
+	at testData.TestDataCreation.createPOSTBodyForReminder(TestDataCreation.java:68)
+	at Exposure.RestAssured.ReminderTests.updateReminderWithBlankValueForChannelExtID_BEP144710014(ReminderTests.java:518)
+... Removed 24 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1428049005", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1428049005'><pre>java.lang.NullPointerException
+	at base.Testbase.executeSelectQuery(Testbase.java:209)
+	at testData.TestDataCreation.createPOSTBodyForReminder(TestDataCreation.java:68)
+	at Exposure.RestAssured.ReminderTests.updateReminderWithBlankValueForChannelExtID_BEP144710014(ReminderTests.java:518)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:80)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:702)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:894)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1219)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
+	at org.testng.TestRunner.privateRun(TestRunner.java:768)
+	at org.testng.TestRunner.run(TestRunner.java:617)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:334)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:329)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:291)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:240)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:87)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1188)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1113)
+	at org.testng.TestNG.run(TestNG.java:1025)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:132)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:236)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:81)
+</pre></div></td>
+<td>0</td>
+<td>Exposure.RestAssured.ReminderTests@37911f88</td></tr>
+<tr>
+<td title='Exposure.RestAssured.ReminderTests.updateReminderWithBlankValueForID_BEP14471006()'><b>updateReminderWithBlankValueForID_BEP14471006</b><br>Test class: Exposure.RestAssured.ReminderTests</td>
+<td><div><pre>java.lang.NullPointerException
+	at base.Testbase.executeSelectQuery(Testbase.java:209)
+	at testData.TestDataCreation.createPOSTBodyForReminder(TestDataCreation.java:68)
+	at Exposure.RestAssured.ReminderTests.updateReminderWithBlankValueForID_BEP14471006(ReminderTests.java:423)
+... Removed 24 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace886333120", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace886333120'><pre>java.lang.NullPointerException
+	at base.Testbase.executeSelectQuery(Testbase.java:209)
+	at testData.TestDataCreation.createPOSTBodyForReminder(TestDataCreation.java:68)
+	at Exposure.RestAssured.ReminderTests.updateReminderWithBlankValueForID_BEP14471006(ReminderTests.java:423)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:80)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:702)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:894)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1219)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
+	at org.testng.TestRunner.privateRun(TestRunner.java:768)
+	at org.testng.TestRunner.run(TestRunner.java:617)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:334)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:329)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:291)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:240)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:87)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1188)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1113)
+	at org.testng.TestNG.run(TestNG.java:1025)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:132)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:236)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:81)
+</pre></div></td>
+<td>0</td>
+<td>Exposure.RestAssured.ReminderTests@37911f88</td></tr>
+<tr>
+<td title='Exposure.RestAssured.ReminderTests.updateReminderWithBlankValueForReminderType_BEP14471008()'><b>updateReminderWithBlankValueForReminderType_BEP14471008</b><br>Test class: Exposure.RestAssured.ReminderTests</td>
+<td><div><pre>java.lang.NullPointerException
+	at base.Testbase.executeSelectQuery(Testbase.java:209)
+	at testData.TestDataCreation.createPOSTBodyForReminder(TestDataCreation.java:68)
+	at Exposure.RestAssured.ReminderTests.updateReminderWithBlankValueForReminderType_BEP14471008(ReminderTests.java:446)
+... Removed 24 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1986677191", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1986677191'><pre>java.lang.NullPointerException
+	at base.Testbase.executeSelectQuery(Testbase.java:209)
+	at testData.TestDataCreation.createPOSTBodyForReminder(TestDataCreation.java:68)
+	at Exposure.RestAssured.ReminderTests.updateReminderWithBlankValueForReminderType_BEP14471008(ReminderTests.java:446)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:80)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:702)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:894)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1219)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
+	at org.testng.TestRunner.privateRun(TestRunner.java:768)
+	at org.testng.TestRunner.run(TestRunner.java:617)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:334)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:329)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:291)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:240)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:87)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1188)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1113)
+	at org.testng.TestNG.run(TestNG.java:1025)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:132)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:236)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:81)
+</pre></div></td>
+<td>0</td>
+<td>Exposure.RestAssured.ReminderTests@37911f88</td></tr>
+<tr>
+<td title='Exposure.RestAssured.ReminderTests.updateReminderWithBlankValueForSchTrailID_BEP144710012()'><b>updateReminderWithBlankValueForSchTrailID_BEP144710012</b><br>Test class: Exposure.RestAssured.ReminderTests</td>
+<td><div><pre>java.lang.NullPointerException
+	at base.Testbase.executeSelectQuery(Testbase.java:209)
+	at testData.TestDataCreation.createPOSTBodyForReminder(TestDataCreation.java:68)
+	at Exposure.RestAssured.ReminderTests.updateReminderWithBlankValueForSchTrailID_BEP144710012(ReminderTests.java:494)
+... Removed 24 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1190724320", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1190724320'><pre>java.lang.NullPointerException
+	at base.Testbase.executeSelectQuery(Testbase.java:209)
+	at testData.TestDataCreation.createPOSTBodyForReminder(TestDataCreation.java:68)
+	at Exposure.RestAssured.ReminderTests.updateReminderWithBlankValueForSchTrailID_BEP144710012(ReminderTests.java:494)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:80)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:702)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:894)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1219)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
+	at org.testng.TestRunner.privateRun(TestRunner.java:768)
+	at org.testng.TestRunner.run(TestRunner.java:617)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:334)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:329)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:291)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:240)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:87)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1188)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1113)
+	at org.testng.TestNG.run(TestNG.java:1025)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:132)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:236)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:81)
+</pre></div></td>
+<td>0</td>
+<td>Exposure.RestAssured.ReminderTests@37911f88</td></tr>
+<tr>
+<td title='Exposure.RestAssured.ReminderTests.updateReminderWithBlankValueforMinsBeforeStart_BEP144710010()'><b>updateReminderWithBlankValueforMinsBeforeStart_BEP144710010</b><br>Test class: Exposure.RestAssured.ReminderTests</td>
+<td><div><pre>java.lang.NullPointerException
+	at base.Testbase.executeSelectQuery(Testbase.java:209)
+	at testData.TestDataCreation.createPOSTBodyForReminder(TestDataCreation.java:68)
+	at Exposure.RestAssured.ReminderTests.updateReminderWithBlankValueforMinsBeforeStart_BEP144710010(ReminderTests.java:470)
+... Removed 24 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1388280822", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1388280822'><pre>java.lang.NullPointerException
+	at base.Testbase.executeSelectQuery(Testbase.java:209)
+	at testData.TestDataCreation.createPOSTBodyForReminder(TestDataCreation.java:68)
+	at Exposure.RestAssured.ReminderTests.updateReminderWithBlankValueforMinsBeforeStart_BEP144710010(ReminderTests.java:470)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:80)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:702)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:894)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1219)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
+	at org.testng.TestRunner.privateRun(TestRunner.java:768)
+	at org.testng.TestRunner.run(TestRunner.java:617)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:334)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:329)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:291)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:240)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:87)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1188)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1113)
+	at org.testng.TestNG.run(TestNG.java:1025)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:132)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:236)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:81)
+</pre></div></td>
+<td>0</td>
+<td>Exposure.RestAssured.ReminderTests@37911f88</td></tr>
+<tr>
+<td title='Exposure.RestAssured.ReminderTests.updateReminderWithInvalidMac_BEP14471005()'><b>updateReminderWithInvalidMac_BEP14471005</b><br>Test class: Exposure.RestAssured.ReminderTests</td>
+<td><div><pre>java.lang.NullPointerException
+	at base.Testbase.executeSelectQuery(Testbase.java:209)
+	at testData.TestDataCreation.createPOSTBodyForReminder(TestDataCreation.java:68)
+	at Exposure.RestAssured.ReminderTests.updateReminderWithInvalidMac_BEP14471005(ReminderTests.java:412)
+... Removed 24 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace234430897", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace234430897'><pre>java.lang.NullPointerException
+	at base.Testbase.executeSelectQuery(Testbase.java:209)
+	at testData.TestDataCreation.createPOSTBodyForReminder(TestDataCreation.java:68)
+	at Exposure.RestAssured.ReminderTests.updateReminderWithInvalidMac_BEP14471005(ReminderTests.java:412)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:80)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:702)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:894)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1219)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
+	at org.testng.TestRunner.privateRun(TestRunner.java:768)
+	at org.testng.TestRunner.run(TestRunner.java:617)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:334)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:329)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:291)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:240)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:87)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1188)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1113)
+	at org.testng.TestNG.run(TestNG.java:1025)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:132)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:236)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:81)
+</pre></div></td>
+<td>0</td>
+<td>Exposure.RestAssured.ReminderTests@37911f88</td></tr>
+<tr>
+<td title='Exposure.RestAssured.ReminderTests.updateReminderWithoutChannelExtID_BEP144710015()'><b>updateReminderWithoutChannelExtID_BEP144710015</b><br>Test class: Exposure.RestAssured.ReminderTests</td>
+<td><div><pre>java.lang.NullPointerException
+	at base.Testbase.executeSelectQuery(Testbase.java:209)
+	at testData.TestDataCreation.createPOSTBodyForReminder(TestDataCreation.java:68)
+	at Exposure.RestAssured.ReminderTests.updateReminderWithoutChannelExtID_BEP144710015(ReminderTests.java:530)
+... Removed 24 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace309790180", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace309790180'><pre>java.lang.NullPointerException
+	at base.Testbase.executeSelectQuery(Testbase.java:209)
+	at testData.TestDataCreation.createPOSTBodyForReminder(TestDataCreation.java:68)
+	at Exposure.RestAssured.ReminderTests.updateReminderWithoutChannelExtID_BEP144710015(ReminderTests.java:530)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:80)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:702)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:894)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1219)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
+	at org.testng.TestRunner.privateRun(TestRunner.java:768)
+	at org.testng.TestRunner.run(TestRunner.java:617)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:334)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:329)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:291)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:240)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:87)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1188)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1113)
+	at org.testng.TestNG.run(TestNG.java:1025)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:132)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:236)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:81)
+</pre></div></td>
+<td>0</td>
+<td>Exposure.RestAssured.ReminderTests@37911f88</td></tr>
+<tr>
+<td title='Exposure.RestAssured.ReminderTests.updateReminderWithoutIDTag_BEP14471007()'><b>updateReminderWithoutIDTag_BEP14471007</b><br>Test class: Exposure.RestAssured.ReminderTests</td>
+<td><div><pre>java.lang.NullPointerException
+	at base.Testbase.executeSelectQuery(Testbase.java:209)
+	at testData.TestDataCreation.createPOSTBodyForReminder(TestDataCreation.java:68)
+	at Exposure.RestAssured.ReminderTests.updateReminderWithoutIDTag_BEP14471007(ReminderTests.java:435)
+... Removed 24 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1476116591", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1476116591'><pre>java.lang.NullPointerException
+	at base.Testbase.executeSelectQuery(Testbase.java:209)
+	at testData.TestDataCreation.createPOSTBodyForReminder(TestDataCreation.java:68)
+	at Exposure.RestAssured.ReminderTests.updateReminderWithoutIDTag_BEP14471007(ReminderTests.java:435)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:80)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:702)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:894)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1219)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
+	at org.testng.TestRunner.privateRun(TestRunner.java:768)
+	at org.testng.TestRunner.run(TestRunner.java:617)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:334)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:329)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:291)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:240)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:87)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1188)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1113)
+	at org.testng.TestNG.run(TestNG.java:1025)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:132)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:236)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:81)
+</pre></div></td>
+<td>0</td>
+<td>Exposure.RestAssured.ReminderTests@37911f88</td></tr>
+<tr>
+<td title='Exposure.RestAssured.ReminderTests.updateReminderWithoutInterfaceVersion_BEP14471002()'><b>updateReminderWithoutInterfaceVersion_BEP14471002</b><br>Test class: Exposure.RestAssured.ReminderTests</td>
+<td><div><pre>java.lang.NullPointerException
+	at base.Testbase.executeSelectQuery(Testbase.java:209)
+	at testData.TestDataCreation.createPOSTBodyForReminder(TestDataCreation.java:68)
+	at Exposure.RestAssured.ReminderTests.updateReminderWithoutInterfaceVersion_BEP14471002(ReminderTests.java:374)
+... Removed 24 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace775254760", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace775254760'><pre>java.lang.NullPointerException
+	at base.Testbase.executeSelectQuery(Testbase.java:209)
+	at testData.TestDataCreation.createPOSTBodyForReminder(TestDataCreation.java:68)
+	at Exposure.RestAssured.ReminderTests.updateReminderWithoutInterfaceVersion_BEP14471002(ReminderTests.java:374)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:80)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:702)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:894)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1219)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
+	at org.testng.TestRunner.privateRun(TestRunner.java:768)
+	at org.testng.TestRunner.run(TestRunner.java:617)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:334)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:329)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:291)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:240)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:87)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1188)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1113)
+	at org.testng.TestNG.run(TestNG.java:1025)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:132)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:236)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:81)
+</pre></div></td>
+<td>0</td>
+<td>Exposure.RestAssured.ReminderTests@37911f88</td></tr>
+<tr>
+<td title='Exposure.RestAssured.ReminderTests.updateReminderWithoutMac_BEP14471004()'><b>updateReminderWithoutMac_BEP14471004</b><br>Test class: Exposure.RestAssured.ReminderTests</td>
+<td><div><pre>java.lang.NullPointerException
+	at base.Testbase.executeSelectQuery(Testbase.java:209)
+	at testData.TestDataCreation.createPOSTBodyForReminder(TestDataCreation.java:68)
+	at Exposure.RestAssured.ReminderTests.updateReminderWithoutMac_BEP14471004(ReminderTests.java:400)
+... Removed 24 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1202479419", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1202479419'><pre>java.lang.NullPointerException
+	at base.Testbase.executeSelectQuery(Testbase.java:209)
+	at testData.TestDataCreation.createPOSTBodyForReminder(TestDataCreation.java:68)
+	at Exposure.RestAssured.ReminderTests.updateReminderWithoutMac_BEP14471004(ReminderTests.java:400)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:80)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:702)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:894)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1219)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
+	at org.testng.TestRunner.privateRun(TestRunner.java:768)
+	at org.testng.TestRunner.run(TestRunner.java:617)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:334)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:329)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:291)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:240)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:87)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1188)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1113)
+	at org.testng.TestNG.run(TestNG.java:1025)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:132)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:236)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:81)
+</pre></div></td>
+<td>0</td>
+<td>Exposure.RestAssured.ReminderTests@37911f88</td></tr>
+<tr>
+<td title='Exposure.RestAssured.ReminderTests.updateReminderWithoutMinsBeforeStartTag_BEP144710011()'><b>updateReminderWithoutMinsBeforeStartTag_BEP144710011</b><br>Test class: Exposure.RestAssured.ReminderTests</td>
+<td><div><pre>java.lang.NullPointerException
+	at base.Testbase.executeSelectQuery(Testbase.java:209)
+	at testData.TestDataCreation.createPOSTBodyForReminder(TestDataCreation.java:68)
+	at Exposure.RestAssured.ReminderTests.updateReminderWithoutMinsBeforeStartTag_BEP144710011(ReminderTests.java:482)
+... Removed 24 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1939282277", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1939282277'><pre>java.lang.NullPointerException
+	at base.Testbase.executeSelectQuery(Testbase.java:209)
+	at testData.TestDataCreation.createPOSTBodyForReminder(TestDataCreation.java:68)
+	at Exposure.RestAssured.ReminderTests.updateReminderWithoutMinsBeforeStartTag_BEP144710011(ReminderTests.java:482)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:80)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:702)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:894)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1219)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
+	at org.testng.TestRunner.privateRun(TestRunner.java:768)
+	at org.testng.TestRunner.run(TestRunner.java:617)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:334)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:329)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:291)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:240)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:87)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1188)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1113)
+	at org.testng.TestNG.run(TestNG.java:1025)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:132)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:236)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:81)
+</pre></div></td>
+<td>0</td>
+<td>Exposure.RestAssured.ReminderTests@37911f88</td></tr>
+<tr>
+<td title='Exposure.RestAssured.ReminderTests.updateReminderWithoutReminderTag_BEP14471009()'><b>updateReminderWithoutReminderTag_BEP14471009</b><br>Test class: Exposure.RestAssured.ReminderTests</td>
+<td><div><pre>java.lang.NullPointerException
+	at base.Testbase.executeSelectQuery(Testbase.java:209)
+	at testData.TestDataCreation.createPOSTBodyForReminder(TestDataCreation.java:68)
+	at Exposure.RestAssured.ReminderTests.updateReminderWithoutReminderTag_BEP14471009(ReminderTests.java:458)
+... Removed 24 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace213095762", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace213095762'><pre>java.lang.NullPointerException
+	at base.Testbase.executeSelectQuery(Testbase.java:209)
+	at testData.TestDataCreation.createPOSTBodyForReminder(TestDataCreation.java:68)
+	at Exposure.RestAssured.ReminderTests.updateReminderWithoutReminderTag_BEP14471009(ReminderTests.java:458)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:80)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:702)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:894)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1219)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
+	at org.testng.TestRunner.privateRun(TestRunner.java:768)
+	at org.testng.TestRunner.run(TestRunner.java:617)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:334)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:329)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:291)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:240)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:87)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1188)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1113)
+	at org.testng.TestNG.run(TestNG.java:1025)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:132)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:236)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:81)
+</pre></div></td>
+<td>0</td>
+<td>Exposure.RestAssured.ReminderTests@37911f88</td></tr>
+<tr>
+<td title='Exposure.RestAssured.ReminderTests.updateReminderWithoutSchTrailIDTag_BEP144710013()'><b>updateReminderWithoutSchTrailIDTag_BEP144710013</b><br>Test class: Exposure.RestAssured.ReminderTests</td>
+<td><div><pre>java.lang.NullPointerException
+	at base.Testbase.executeSelectQuery(Testbase.java:209)
+	at testData.TestDataCreation.createPOSTBodyForReminder(TestDataCreation.java:68)
+	at Exposure.RestAssured.ReminderTests.updateReminderWithoutSchTrailIDTag_BEP144710013(ReminderTests.java:506)
+... Removed 24 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace318020776", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace318020776'><pre>java.lang.NullPointerException
+	at base.Testbase.executeSelectQuery(Testbase.java:209)
+	at testData.TestDataCreation.createPOSTBodyForReminder(TestDataCreation.java:68)
+	at Exposure.RestAssured.ReminderTests.updateReminderWithoutSchTrailIDTag_BEP144710013(ReminderTests.java:506)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:80)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:702)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:894)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1219)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
+	at org.testng.TestRunner.privateRun(TestRunner.java:768)
+	at org.testng.TestRunner.run(TestRunner.java:617)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:334)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:329)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:291)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:240)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:87)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1188)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1113)
+	at org.testng.TestNG.run(TestNG.java:1025)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:132)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:236)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:81)
+</pre></div></td>
+<td>0</td>
+<td>Exposure.RestAssured.ReminderTests@37911f88</td></tr>
+<tr>
+<td title='Exposure.RestAssured.ReminderTests.updateReminder_BEP14471001()'><b>updateReminder_BEP14471001</b><br>Test class: Exposure.RestAssured.ReminderTests</td>
+<td><div><pre>java.lang.NullPointerException
+	at base.Testbase.executeSelectQuery(Testbase.java:209)
+	at testData.TestDataCreation.createPOSTBodyForReminder(TestDataCreation.java:68)
+	at Exposure.RestAssured.ReminderTests.updateReminder_BEP14471001(ReminderTests.java:356)
+... Removed 24 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace441451873", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace441451873'><pre>java.lang.NullPointerException
+	at base.Testbase.executeSelectQuery(Testbase.java:209)
+	at testData.TestDataCreation.createPOSTBodyForReminder(TestDataCreation.java:68)
+	at Exposure.RestAssured.ReminderTests.updateReminder_BEP14471001(ReminderTests.java:356)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:80)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:702)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:894)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1219)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
+	at org.testng.TestRunner.privateRun(TestRunner.java:768)
+	at org.testng.TestRunner.run(TestRunner.java:617)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:334)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:329)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:291)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:240)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:87)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1188)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1113)
+	at org.testng.TestNG.run(TestNG.java:1025)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:132)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:236)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:81)
+</pre></div></td>
+<td>0</td>
+<td>Exposure.RestAssured.ReminderTests@37911f88</td></tr>
+</table><p>
+<table width='100%' border='1' class='invocation-passed'>
+<tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='Exposure.RestAssured.ReminderTests.addReminderWithInvalidMac_BEP14470006()'><b>addReminderWithInvalidMac_BEP14470006</b><br>Test class: Exposure.RestAssured.ReminderTests</td>
+<td></td>
+<td>1</td>
+<td>Exposure.RestAssured.ReminderTests@37911f88</td></tr>
+<tr>
+<td title='Exposure.RestAssured.ReminderTests.addReminderWithoutMac_BEP14470005()'><b>addReminderWithoutMac_BEP14470005</b><br>Test class: Exposure.RestAssured.ReminderTests</td>
+<td></td>
+<td>0</td>
+<td>Exposure.RestAssured.ReminderTests@37911f88</td></tr>
+<tr>
+<td title='Exposure.RestAssured.ReminderTests.getReminderBTACall_BEP14477004()'><b>getReminderBTACall_BEP14477004</b><br>Test class: Exposure.RestAssured.ReminderTests</td>
+<td></td>
+<td>0</td>
+<td>Exposure.RestAssured.ReminderTests@37911f88</td></tr>
+<tr>
+<td title='Exposure.RestAssured.ReminderTests.getReminderBTACall_BEP14477005()'><b>getReminderBTACall_BEP14477005</b><br>Test class: Exposure.RestAssured.ReminderTests</td>
+<td></td>
+<td>0</td>
+<td>Exposure.RestAssured.ReminderTests@37911f88</td></tr>
+<tr>
+<td title='Exposure.RestAssured.setConsentTest.setConsentTVReco_OPTIN_BEP1423002()'><b>setConsentTVReco_OPTIN_BEP1423002</b><br>Test class: Exposure.RestAssured.setConsentTest</td>
+<td></td>
+<td>0</td>
+<td>Exposure.RestAssured.setConsentTest@6f1c29b7</td></tr>
+<tr>
+<td title='Exposure.RestAssured.setConsentTest.setConsentTVReco_OPTOUT_BEP1423004()'><b>setConsentTVReco_OPTOUT_BEP1423004</b><br>Test class: Exposure.RestAssured.setConsentTest</td>
+<td></td>
+<td>0</td>
+<td>Exposure.RestAssured.setConsentTest@6f1c29b7</td></tr>
+<tr>
+<td title='Exposure.RestAssured.setConsentTest.setConsentTVTA_OPTIN_BEP1423001()'><b>setConsentTVTA_OPTIN_BEP1423001</b><br>Test class: Exposure.RestAssured.setConsentTest</td>
+<td></td>
+<td>3</td>
+<td>Exposure.RestAssured.setConsentTest@6f1c29b7</td></tr>
+<tr>
+<td title='Exposure.RestAssured.setConsentTest.setConsentTVTA_OPTOUT_BEP1423003()'><b>setConsentTVTA_OPTOUT_BEP1423003</b><br>Test class: Exposure.RestAssured.setConsentTest</td>
+<td></td>
+<td>0</td>
+<td>Exposure.RestAssured.setConsentTest@6f1c29b7</td></tr>
+<tr>
+<td title='Exposure.RestAssured.setConsentTest.setConsentwithInvalidConsentType_BEP1423005()'><b>setConsentwithInvalidConsentType_BEP1423005</b><br>Test class: Exposure.RestAssured.setConsentTest</td>
+<td></td>
+<td>0</td>
+<td>Exposure.RestAssured.setConsentTest@6f1c29b7</td></tr>
+<tr>
+<td title='Exposure.RestAssured.setConsentTest.setConsentwithInvalidConsentValue_BEP1423006()'><b>setConsentwithInvalidConsentValue_BEP1423006</b><br>Test class: Exposure.RestAssured.setConsentTest</td>
+<td></td>
+<td>0</td>
+<td>Exposure.RestAssured.setConsentTest@6f1c29b7</td></tr>
+</table><p>
+</body>
+</html>

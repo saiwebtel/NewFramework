@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [Suite]">
+  <listeners>
+    <listener class-name="ExtentReport.ExtentReportListner"/>
+  </listeners>
+  <test name="Test(failed)" preserve-order="true">
+    <classes>
+      <class name="Exposure.RestAssured.ReminderTests">
+        <methods>
+          <include name="addReminderWithoutMinsBeforeStartTag_BEP144700010"/>
+          <include name="updateReminderWithoutInterfaceVersion_BEP14471002"/>
+          <include name="updateReminderWithoutMinsBeforeStartTag_BEP144710011"/>
+          <include name="updateReminderWithoutSchTrailIDTag_BEP144710013"/>
+          <include name="addReminderWithoutReminderTag_BEP14470008"/>
+          <include name="updateReminderWhenIcorrectSchTrailID_BEP144710018"/>
+          <include name="beforeTest"/>
+          <include name="updateReminderWithoutMac_BEP14471004"/>
+          <include name="updateReminderWhenMinsBeforeStartIsnotCorrect_BEP144710020"/>
+          <include name="updateReminderWithBlankValueForID_BEP14471006"/>
+          <include name="updateReminderWithInvalidMac_BEP14471005"/>
+          <include name="addReminderWithBlankValueForReminderType_BEP14470007"/>
+          <include name="addReminderWhenMinsBeforeStartIsnotCorrect_BEP144700018"/>
+          <include name="getReminderBTACall_BEP14477002"/>
+          <include name="afterTest"/>
+          <include name="addReminderWithoutSchTrailIDTag_BEP144700012"/>
+          <include name="addReminderWithBlankValueForChannelExtID_BEP144700013"/>
+          <include name="addReminderWithInterfaceVersion520_BEP14470001"/>
+          <include name="getReminderBTACall_BEP14477001"/>
+          <include name="updateReminderWithBlankValueForSchTrailID_BEP144710012"/>
+          <include name="addReminderWhenIcorrectChannelExtID_BEP144700017"/>
+          <include name="getReminderBTACall_BEP14477003"/>
+          <include name="updateReminderWithBlankValueforMinsBeforeStart_BEP144710010"/>
+          <include name="updateReminderWhenIcorrectSchTrailID_BEP144710021"/>
+          <include name="updateReminderWithoutIDTag_BEP14471007"/>
+          <include name="addReminderWhenIcorrectSchTrailID_BEP144700016"/>
+          <include name="updateReminderWithoutReminderTag_BEP14471009"/>
+          <include name="updateReminderWhenIcorrectChannelExtID_BEP144710019"/>
+          <include name="updateReminderWhenInterfaceVersionLessThen420_BEP14471003"/>
+          <include name="updateReminderWithBlankValueForReminderType_BEP14471008"/>
+          <include name="updateReminderWithBlankValueForChannelExtID_BEP144710014"/>
+          <include name="beforeSuite"/>
+          <include name="addReminderWithBlankValueforMinsBeforeStart_BEP14470009"/>
+          <include name="addReminderWithoutChannelExtID_BEP144700014"/>
+          <include name="addReminderWithoutInterfaceVersion_BEP14470002"/>
+          <include name="updateReminderWithoutChannelExtID_BEP144710015"/>
+          <include name="addReminderWithBlankValueForSchTrailID_BEP144700011"/>
+          <include name="addReminderWithInterfaceVersion420_BEP14470004"/>
+          <include name="addReminderWithInterfaceVersionLessThan420_BEP14470003"/>
+          <include name="updateReminder_BEP14471001"/>
+          <include name="afterSuite"/>
+        </methods>
+      </class> <!-- Exposure.RestAssured.ReminderTests -->
+      <class name="Exposure.RestAssured.setConsentTest">
+        <methods>
+          <include name="beforeTest"/>
+        </methods>
+      </class> <!-- Exposure.RestAssured.setConsentTest -->
+    </classes>
+  </test> <!-- Test(failed) -->
+</suite> <!-- Failed suite [Suite] -->

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2009 sp1 (http://www.altova.com) by SDE/SDV/ITE (Belgacom) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+	<xs:annotation>
+		<xs:documentation>
+		    Description: Schema file for the serverlist types
+		    Applicable for BEP version: 5.4
+		    Version: 5.4.01
+		    Date: 2019-04-30
+		    History:
+		    == BB 5.4.01 : initial draft.
+				  Copied from T_OCI_Properties.
+		</xs:documentation>
+	</xs:annotation>
+	<!--START referenced elements -->
+	<xs:element name="Name">
+		<xs:annotation>
+			<xs:documentation>Nome of the property stored in TM by the Subscriber Device</xs:documentation>
+		</xs:annotation>
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:minLength value="1"/>
+				<xs:maxLength value="256"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="Value">
+		<xs:annotation>
+			<xs:documentation>Value of the property stored in TM by the Subscriber Device</xs:documentation>
+		</xs:annotation>
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:minLength value="0"/>
+				<xs:maxLength value="4000"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<!--END referenced elements -->
+	<xs:complexType name="T_STBPropertyNames">
+		<xs:sequence minOccurs="0">
+			<xs:element name="Property" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Property stored in TM by the Subscriber Device</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="Name"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="T_STBProperties">
+		<xs:sequence minOccurs="0">
+			<xs:element name="Property" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Property stored in TM by the Subscriber Device</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="Name"/>
+						<xs:element ref="Value"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

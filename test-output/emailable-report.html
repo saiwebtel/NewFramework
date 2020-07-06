@@ -1,0 +1,433 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>TestNG:  Unit Test</title>
+<style type="text/css">
+table caption,table.info_table,table.param,table.passed,table.failed {margin-bottom:10px;border:1px solid #000099;border-collapse:collapse;empty-cells:show;}
+table.info_table td,table.info_table th,table.param td,table.param th,table.passed td,table.passed th,table.failed td,table.failed th {
+border:1px solid #000099;padding:.25em .5em .25em .5em
+}
+table.param th {vertical-align:bottom}
+td.numi,th.numi,td.numi_attn {
+text-align:right
+}
+tr.total td {font-weight:bold}
+table caption {
+text-align:center;font-weight:bold;
+}
+table.passed tr.stripe td,table tr.passedodd td {background-color: #00AA00;}
+table.passed td,table tr.passedeven td {background-color: #33FF33;}
+table.passed tr.stripe td,table tr.skippedodd td {background-color: #cccccc;}
+table.passed td,table tr.skippedodd td {background-color: #dddddd;}
+table.failed tr.stripe td,table tr.failedodd td,table.param td.numi_attn {background-color: #FF3333;}
+table.failed td,table tr.failedeven td,table.param tr.stripe td.numi_attn {background-color: #DD0000;}
+tr.stripe td,tr.stripe th {background-color: #E6EBF9;}
+p.totop {font-size:85%;text-align:center;border-bottom:2px black solid}
+div.shootout {padding:2em;border:3px #4854A8 solid}
+</style>
+</head>
+<body>
+<table cellspacing=0 cellpadding=0 class="param">
+<tr><th>Test</th><th class="numi">Methods<br/>Passed</th><th class="numi">Scenarios<br/>Passed</th><th class="numi"># skipped</th><th class="numi"># failed</th><th class="numi">Total<br/>Time</th><th class="numi">Included<br/>Groups</th><th class="numi">Excluded<br/>Groups</th></tr>
+<tr><td style="text-align:left;padding-right:2em">Test</td><td class="numi">10</td><td class="numi">10</td><td class="numi">0</td><td class="numi_attn">37</td><td class="numi">26.2 seconds</td><td class="numi"></td><td class="numi"></td></tr>
+</table>
+<a id="summary"></a>
+<table cellspacing=0 cellpadding=0 class="passed">
+<tr><th>Class</th><th>Method</th><th># of<br/>Scenarios</th><th>Start</th><th>Time<br/>(ms)</th></tr>
+<tr><th colspan="4">Test &#8212; failed</th></tr>
+<tr class="failedodd"><td rowspan="37">Exposure.RestAssured.ReminderTests<td><a href="#m1"><b>addReminderWithInterfaceVersion520_BEP14470001</b>  </a></td><td class="numi">1</td><td>1593499456676</td><td class="numi">2803</td></tr><tr class="failedodd"><td><a href="#m2"><b>addReminderWithInterfaceVersion420_BEP14470004</b>  </a></td><td class="numi">1</td><td>1593499459502</td><td class="numi">1086</td></tr><tr class="failedodd"><td><a href="#m3"><b>addReminderWithoutInterfaceVersion_BEP14470002</b>  </a></td><td class="numi">1</td><td>1593499460589</td><td class="numi">710</td></tr><tr class="failedodd"><td><a href="#m4"><b>addReminderWithInterfaceVersionLessThan420_BEP14470003</b>  </a></td><td class="numi">1</td><td>1593499461300</td><td class="numi">737</td></tr><tr class="failedodd"><td><a href="#m5"><b>addReminderWithBlankValueForReminderType_BEP14470007</b>  </a></td><td class="numi">1</td><td>1593499463784</td><td class="numi">725</td></tr><tr class="failedodd"><td><a href="#m6"><b>addReminderWithoutReminderTag_BEP14470008</b>  </a></td><td class="numi">1</td><td>1593499464510</td><td class="numi">726</td></tr><tr class="failedodd"><td><a href="#m7"><b>addReminderWithBlankValueforMinsBeforeStart_BEP14470009</b>  </a></td><td class="numi">1</td><td>1593499465237</td><td class="numi">720</td></tr><tr class="failedodd"><td><a href="#m8"><b>addReminderWithoutMinsBeforeStartTag_BEP144700010</b>  </a></td><td class="numi">1</td><td>1593499465958</td><td class="numi">725</td></tr><tr class="failedodd"><td><a href="#m9"><b>addReminderWithBlankValueForSchTrailID_BEP144700011</b>  </a></td><td class="numi">1</td><td>1593499466684</td><td class="numi">942</td></tr><tr class="failedodd"><td><a href="#m10"><b>addReminderWithoutSchTrailIDTag_BEP144700012</b>  </a></td><td class="numi">1</td><td>1593499467627</td><td class="numi">918</td></tr><tr class="failedodd"><td><a href="#m11"><b>addReminderWithBlankValueForChannelExtID_BEP144700013</b>  </a></td><td class="numi">1</td><td>1593499468545</td><td class="numi">947</td></tr><tr class="failedodd"><td><a href="#m12"><b>addReminderWithoutChannelExtID_BEP144700014</b>  </a></td><td class="numi">1</td><td>1593499469492</td><td class="numi">912</td></tr><tr class="failedodd"><td><a href="#m13"><b>addReminderWhenIcorrectSchTrailID_BEP144700016</b>  </a></td><td class="numi">1</td><td>1593499470405</td><td class="numi">1167</td></tr><tr class="failedodd"><td><a href="#m14"><b>addReminderWhenIcorrectChannelExtID_BEP144700017</b>  </a></td><td class="numi">1</td><td>1593499471574</td><td class="numi">1178</td></tr><tr class="failedodd"><td><a href="#m15"><b>addReminderWhenMinsBeforeStartIsnotCorrect_BEP144700018</b>  </a></td><td class="numi">1</td><td>1593499472753</td><td class="numi">690</td></tr><tr class="failedodd"><td><a href="#m16"><b>getReminderBTACall_BEP14477001</b>  </a></td><td class="numi">1</td><td>1593499473444</td><td class="numi">250</td></tr><tr class="failedodd"><td><a href="#m17"><b>getReminderBTACall_BEP14477002</b>  </a></td><td class="numi">1</td><td>1593499473695</td><td class="numi">108</td></tr><tr class="failedodd"><td><a href="#m18"><b>getReminderBTACall_BEP14477003</b>  </a></td><td class="numi">1</td><td>1593499473804</td><td class="numi">147</td></tr><tr class="failedodd"><td><a href="#m19"><b>updateReminder_BEP14471001</b>  </a></td><td class="numi">1</td><td>1593499474176</td><td class="numi">141</td></tr><tr class="failedodd"><td><a href="#m20"><b>updateReminderWithoutInterfaceVersion_BEP14471002</b>  </a></td><td class="numi">1</td><td>1593499474318</td><td class="numi">354</td></tr><tr class="failedodd"><td><a href="#m21"><b>updateReminderWhenInterfaceVersionLessThen420_BEP14471003</b>  </a></td><td class="numi">1</td><td>1593499474672</td><td class="numi">362</td></tr><tr class="failedodd"><td><a href="#m22"><b>updateReminderWithoutMac_BEP14471004</b>  </a></td><td class="numi">1</td><td>1593499475035</td><td class="numi">354</td></tr><tr class="failedodd"><td><a href="#m23"><b>updateReminderWithInvalidMac_BEP14471005</b>  </a></td><td class="numi">1</td><td>1593499475390</td><td class="numi">356</td></tr><tr class="failedodd"><td><a href="#m24"><b>updateReminderWithBlankValueForID_BEP14471006</b>  </a></td><td class="numi">1</td><td>1593499475747</td><td class="numi">131</td></tr><tr class="failedodd"><td><a href="#m25"><b>updateReminderWithoutIDTag_BEP14471007</b>  </a></td><td class="numi">1</td><td>1593499475879</td><td class="numi">139</td></tr><tr class="failedodd"><td><a href="#m26"><b>updateReminderWithBlankValueForReminderType_BEP14471008</b>  </a></td><td class="numi">1</td><td>1593499476019</td><td class="numi">137</td></tr><tr class="failedodd"><td><a href="#m27"><b>updateReminderWithoutReminderTag_BEP14471009</b>  </a></td><td class="numi">1</td><td>1593499476156</td><td class="numi">134</td></tr><tr class="failedodd"><td><a href="#m28"><b>updateReminderWithBlankValueforMinsBeforeStart_BEP144710010</b>  </a></td><td class="numi">1</td><td>1593499476291</td><td class="numi">143</td></tr><tr class="failedodd"><td><a href="#m29"><b>updateReminderWithoutMinsBeforeStartTag_BEP144710011</b>  </a></td><td class="numi">1</td><td>1593499476435</td><td class="numi">139</td></tr><tr class="failedodd"><td><a href="#m30"><b>updateReminderWithBlankValueForSchTrailID_BEP144710012</b>  </a></td><td class="numi">1</td><td>1593499476574</td><td class="numi">149</td></tr><tr class="failedodd"><td><a href="#m31"><b>updateReminderWithoutSchTrailIDTag_BEP144710013</b>  </a></td><td class="numi">1</td><td>1593499476724</td><td class="numi">143</td></tr><tr class="failedodd"><td><a href="#m32"><b>updateReminderWithBlankValueForChannelExtID_BEP144710014</b>  </a></td><td class="numi">1</td><td>1593499476867</td><td class="numi">134</td></tr><tr class="failedodd"><td><a href="#m33"><b>updateReminderWithoutChannelExtID_BEP144710015</b>  </a></td><td class="numi">1</td><td>1593499477002</td><td class="numi">143</td></tr><tr class="failedodd"><td><a href="#m34"><b>updateReminderWhenIcorrectSchTrailID_BEP144710018</b>  </a></td><td class="numi">1</td><td>1593499477145</td><td class="numi">137</td></tr><tr class="failedodd"><td><a href="#m35"><b>updateReminderWhenIcorrectChannelExtID_BEP144710019</b>  </a></td><td class="numi">1</td><td>1593499477282</td><td class="numi">143</td></tr><tr class="failedodd"><td><a href="#m36"><b>updateReminderWhenMinsBeforeStartIsnotCorrect_BEP144710020</b>  </a></td><td class="numi">1</td><td>1593499477425</td><td class="numi">133</td></tr><tr class="failedodd"><td><a href="#m37"><b>updateReminderWhenIcorrectSchTrailID_BEP144710021</b>  </a></td><td class="numi">1</td><td>1593499477559</td><td class="numi">142</td></tr>
+<tr><th colspan="4">Test &#8212; passed</th></tr>
+<tr class="passedodd"><td rowspan="4">Exposure.RestAssured.ReminderTests<td><a href="#m38"><b>addReminderWithoutMac_BEP14470005</b>  </a></td><td class="numi">1</td><td>1593499462038</td><td class="numi">724</td></tr><tr class="passedodd"><td><a href="#m39"><b>addReminderWithInvalidMac_BEP14470006</b>  </a></td><td class="numi">1</td><td>1593499462764</td><td class="numi">1020</td></tr><tr class="passedodd"><td><a href="#m40"><b>getReminderBTACall_BEP14477004</b>  </a></td><td class="numi">1</td><td>1593499473951</td><td class="numi">181</td></tr><tr class="passedodd"><td><a href="#m41"><b>getReminderBTACall_BEP14477005</b>  </a></td><td class="numi">1</td><td>1593499474132</td><td class="numi">44</td></tr>
+<tr class="passedeven"><td rowspan="6">Exposure.RestAssured.setConsentTest<td><a href="#m42"><b>setConsentTVTA_OPTIN_BEP1423001</b>  </a></td><td class="numi">1</td><td>1593499477703</td><td class="numi">3054</td></tr><tr class="passedeven"><td><a href="#m43"><b>setConsentTVReco_OPTIN_BEP1423002</b>  </a></td><td class="numi">1</td><td>1593499480758</td><td class="numi">680</td></tr><tr class="passedeven"><td><a href="#m44"><b>setConsentTVTA_OPTOUT_BEP1423003</b>  </a></td><td class="numi">1</td><td>1593499481438</td><td class="numi">421</td></tr><tr class="passedeven"><td><a href="#m45"><b>setConsentTVReco_OPTOUT_BEP1423004</b>  </a></td><td class="numi">1</td><td>1593499481859</td><td class="numi">436</td></tr><tr class="passedeven"><td><a href="#m46"><b>setConsentwithInvalidConsentType_BEP1423005</b>  </a></td><td class="numi">1</td><td>1593499482295</td><td class="numi">319</td></tr><tr class="passedeven"><td><a href="#m47"><b>setConsentwithInvalidConsentValue_BEP1423006</b>  </a></td><td class="numi">1</td><td>1593499482614</td><td class="numi">227</td></tr>
+</table>
+<h1>Test</h1>
+<a id="m1"></a><h2>Exposure.RestAssured.ReminderTests:updateReminderWhenIcorrectSchTrailID_BEP144710021</h2>
+<div style="padding-left:3em">
+<p>null</p>
+base.Testbase.executeSelectQuery(Testbase.java:209)
+<br/>at testData.TestDataCreation.createPOSTBodyForReminder(TestDataCreation.java:68)
+<br/>at Exposure.RestAssured.ReminderTests.updateReminderWhenIcorrectSchTrailID_BEP144710021(ReminderTests.java:579)
+<br/>25 lines not shown
+</div>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<a id="m2"></a><h2>Exposure.RestAssured.ReminderTests:addReminderWithoutChannelExtID_BEP144700014</h2>
+<div style="padding-left:3em">
+<p>expected:&lt;Channel External Id tag is either missing/empty&gt; but was:&lt;Mandatory parameter is missing. Supported types are MAC, DeviceID, AccountNumber as request parameter or GID as request header.&gt;</p>
+org.testng.Assert.fail(Assert.java:89)
+<br/>at org.testng.Assert.failNotEquals(Assert.java:489)
+<br/>at org.testng.Assert.assertEquals(Assert.java:118)
+<br/>at org.testng.Assert.assertEquals(Assert.java:160)
+<br/>at Exposure.RestAssured.ReminderTests.addReminderWithoutChannelExtID_BEP144700014(ReminderTests.java:241)
+<br/>25 lines not shown
+</div>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<a id="m3"></a><h2>Exposure.RestAssured.ReminderTests:updateReminderWhenMinsBeforeStartIsnotCorrect_BEP144710020</h2>
+<div style="padding-left:3em">
+<p>null</p>
+base.Testbase.executeSelectQuery(Testbase.java:209)
+<br/>at testData.TestDataCreation.createPOSTBodyForReminder(TestDataCreation.java:68)
+<br/>at Exposure.RestAssured.ReminderTests.updateReminderWhenMinsBeforeStartIsnotCorrect_BEP144710020(ReminderTests.java:567)
+<br/>25 lines not shown
+</div>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<a id="m4"></a><h2>Exposure.RestAssured.ReminderTests:addReminderWithoutReminderTag_BEP14470008</h2>
+<div style="padding-left:3em">
+<p>expected:&lt;Reminder Type tag is either missing or empty&gt; but was:&lt;Mandatory parameter is missing. Supported types are MAC, DeviceID, AccountNumber as request parameter or GID as request header.&gt;</p>
+org.testng.Assert.fail(Assert.java:89)
+<br/>at org.testng.Assert.failNotEquals(Assert.java:489)
+<br/>at org.testng.Assert.assertEquals(Assert.java:118)
+<br/>at org.testng.Assert.assertEquals(Assert.java:160)
+<br/>at Exposure.RestAssured.ReminderTests.addReminderWithoutReminderTag_BEP14470008(ReminderTests.java:174)
+<br/>25 lines not shown
+</div>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<a id="m5"></a><h2>Exposure.RestAssured.ReminderTests:addReminderWithoutMinsBeforeStartTag_BEP144700010</h2>
+<div style="padding-left:3em">
+<p>expected:&lt;Mins Before Start tag is either missing/empty/incorrect&gt; but was:&lt;Mandatory parameter is missing. Supported types are MAC, DeviceID, AccountNumber as request parameter or GID as request header.&gt;</p>
+org.testng.Assert.fail(Assert.java:89)
+<br/>at org.testng.Assert.failNotEquals(Assert.java:489)
+<br/>at org.testng.Assert.assertEquals(Assert.java:118)
+<br/>at org.testng.Assert.assertEquals(Assert.java:160)
+<br/>at Exposure.RestAssured.ReminderTests.addReminderWithoutMinsBeforeStartTag_BEP144700010(ReminderTests.java:196)
+<br/>25 lines not shown
+</div>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<a id="m6"></a><h2>Exposure.RestAssured.ReminderTests:updateReminderWithInvalidMac_BEP14471005</h2>
+<div style="padding-left:3em">
+<p>null</p>
+base.Testbase.executeSelectQuery(Testbase.java:209)
+<br/>at testData.TestDataCreation.createPOSTBodyForReminder(TestDataCreation.java:68)
+<br/>at Exposure.RestAssured.ReminderTests.updateReminderWithInvalidMac_BEP14471005(ReminderTests.java:412)
+<br/>25 lines not shown
+</div>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<a id="m7"></a><h2>Exposure.RestAssured.ReminderTests:updateReminderWithBlankValueforMinsBeforeStart_BEP144710010</h2>
+<div style="padding-left:3em">
+<p>null</p>
+base.Testbase.executeSelectQuery(Testbase.java:209)
+<br/>at testData.TestDataCreation.createPOSTBodyForReminder(TestDataCreation.java:68)
+<br/>at Exposure.RestAssured.ReminderTests.updateReminderWithBlankValueforMinsBeforeStart_BEP144710010(ReminderTests.java:470)
+<br/>25 lines not shown
+</div>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<a id="m8"></a><h2>Exposure.RestAssured.ReminderTests:addReminderWithBlankValueforMinsBeforeStart_BEP14470009</h2>
+<div style="padding-left:3em">
+<p>expected:&lt;Mins Before Start tag is either missing/empty/incorrect&gt; but was:&lt;Mandatory parameter is missing. Supported types are MAC, DeviceID, AccountNumber as request parameter or GID as request header.&gt;</p>
+org.testng.Assert.fail(Assert.java:89)
+<br/>at org.testng.Assert.failNotEquals(Assert.java:489)
+<br/>at org.testng.Assert.assertEquals(Assert.java:118)
+<br/>at org.testng.Assert.assertEquals(Assert.java:160)
+<br/>at Exposure.RestAssured.ReminderTests.addReminderWithBlankValueforMinsBeforeStart_BEP14470009(ReminderTests.java:185)
+<br/>25 lines not shown
+</div>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<a id="m9"></a><h2>Exposure.RestAssured.ReminderTests:getReminderBTACall_BEP14477001</h2>
+<div style="padding-left:3em">
+<p>expected:&lt;null&gt; but was:&lt;&gt;</p>
+org.testng.Assert.fail(Assert.java:89)
+<br/>at org.testng.Assert.failNotEquals(Assert.java:489)
+<br/>at org.testng.Assert.assertEquals(Assert.java:118)
+<br/>at org.testng.Assert.assertEquals(Assert.java:160)
+<br/>at Exposure.RestAssured.ReminderTests.getReminderBTACall_BEP14477001(ReminderTests.java:290)
+<br/>25 lines not shown
+</div>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<a id="m10"></a><h2>Exposure.RestAssured.ReminderTests:updateReminderWithoutChannelExtID_BEP144710015</h2>
+<div style="padding-left:3em">
+<p>null</p>
+base.Testbase.executeSelectQuery(Testbase.java:209)
+<br/>at testData.TestDataCreation.createPOSTBodyForReminder(TestDataCreation.java:68)
+<br/>at Exposure.RestAssured.ReminderTests.updateReminderWithoutChannelExtID_BEP144710015(ReminderTests.java:530)
+<br/>25 lines not shown
+</div>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<a id="m11"></a><h2>Exposure.RestAssured.ReminderTests:updateReminderWithBlankValueForID_BEP14471006</h2>
+<div style="padding-left:3em">
+<p>null</p>
+base.Testbase.executeSelectQuery(Testbase.java:209)
+<br/>at testData.TestDataCreation.createPOSTBodyForReminder(TestDataCreation.java:68)
+<br/>at Exposure.RestAssured.ReminderTests.updateReminderWithBlankValueForID_BEP14471006(ReminderTests.java:423)
+<br/>25 lines not shown
+</div>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<a id="m12"></a><h2>Exposure.RestAssured.ReminderTests:updateReminderWithoutIDTag_BEP14471007</h2>
+<div style="padding-left:3em">
+<p>null</p>
+base.Testbase.executeSelectQuery(Testbase.java:209)
+<br/>at testData.TestDataCreation.createPOSTBodyForReminder(TestDataCreation.java:68)
+<br/>at Exposure.RestAssured.ReminderTests.updateReminderWithoutIDTag_BEP14471007(ReminderTests.java:435)
+<br/>25 lines not shown
+</div>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<a id="m13"></a><h2>Exposure.RestAssured.ReminderTests:addReminderWithInterfaceVersionLessThan420_BEP14470003</h2>
+<div style="padding-left:3em">
+<p>expected:&lt;Invalid Interface version&gt; but was:&lt;Mandatory parameter is missing. Supported types are MAC, DeviceID, AccountNumber as request parameter or GID as request header.&gt;</p>
+org.testng.Assert.fail(Assert.java:89)
+<br/>at org.testng.Assert.failNotEquals(Assert.java:489)
+<br/>at org.testng.Assert.assertEquals(Assert.java:118)
+<br/>at org.testng.Assert.assertEquals(Assert.java:160)
+<br/>at Exposure.RestAssured.ReminderTests.addReminderWithInterfaceVersionLessThan420_BEP14470003(ReminderTests.java:128)
+<br/>25 lines not shown
+</div>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<a id="m14"></a><h2>Exposure.RestAssured.ReminderTests:getReminderBTACall_BEP14477003</h2>
+<div style="padding-left:3em">
+<p>expected:&lt;Invalid Interface version&gt; but was:&lt;Mandatory parameter is missing. Supported types are MAC, DeviceID, AccountNumber as request parameter or GID as request header.&gt;</p>
+org.testng.Assert.fail(Assert.java:89)
+<br/>at org.testng.Assert.failNotEquals(Assert.java:489)
+<br/>at org.testng.Assert.assertEquals(Assert.java:118)
+<br/>at org.testng.Assert.assertEquals(Assert.java:160)
+<br/>at Exposure.RestAssured.ReminderTests.getReminderBTACall_BEP14477003(ReminderTests.java:319)
+<br/>25 lines not shown
+</div>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<a id="m15"></a><h2>Exposure.RestAssured.ReminderTests:updateReminderWithoutMac_BEP14471004</h2>
+<div style="padding-left:3em">
+<p>null</p>
+base.Testbase.executeSelectQuery(Testbase.java:209)
+<br/>at testData.TestDataCreation.createPOSTBodyForReminder(TestDataCreation.java:68)
+<br/>at Exposure.RestAssured.ReminderTests.updateReminderWithoutMac_BEP14471004(ReminderTests.java:400)
+<br/>25 lines not shown
+</div>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<a id="m16"></a><h2>Exposure.RestAssured.ReminderTests:updateReminderWithBlankValueForSchTrailID_BEP144710012</h2>
+<div style="padding-left:3em">
+<p>null</p>
+base.Testbase.executeSelectQuery(Testbase.java:209)
+<br/>at testData.TestDataCreation.createPOSTBodyForReminder(TestDataCreation.java:68)
+<br/>at Exposure.RestAssured.ReminderTests.updateReminderWithBlankValueForSchTrailID_BEP144710012(ReminderTests.java:494)
+<br/>25 lines not shown
+</div>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<a id="m17"></a><h2>Exposure.RestAssured.ReminderTests:addReminderWhenMinsBeforeStartIsnotCorrect_BEP144700018</h2>
+<div style="padding-left:3em">
+<p>expected:&lt;Mins Before Start value should be between 0 and 99&gt; but was:&lt;Mandatory parameter is missing. Supported types are MAC, DeviceID, AccountNumber as request parameter or GID as request header.&gt;</p>
+org.testng.Assert.fail(Assert.java:89)
+<br/>at org.testng.Assert.failNotEquals(Assert.java:489)
+<br/>at org.testng.Assert.assertEquals(Assert.java:118)
+<br/>at org.testng.Assert.assertEquals(Assert.java:160)
+<br/>at Exposure.RestAssured.ReminderTests.addReminderWhenMinsBeforeStartIsnotCorrect_BEP144700018(ReminderTests.java:275)
+<br/>25 lines not shown
+</div>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<a id="m18"></a><h2>Exposure.RestAssured.ReminderTests:updateReminderWithoutSchTrailIDTag_BEP144710013</h2>
+<div style="padding-left:3em">
+<p>null</p>
+base.Testbase.executeSelectQuery(Testbase.java:209)
+<br/>at testData.TestDataCreation.createPOSTBodyForReminder(TestDataCreation.java:68)
+<br/>at Exposure.RestAssured.ReminderTests.updateReminderWithoutSchTrailIDTag_BEP144710013(ReminderTests.java:506)
+<br/>25 lines not shown
+</div>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<a id="m19"></a><h2>Exposure.RestAssured.ReminderTests:updateReminderWithoutInterfaceVersion_BEP14471002</h2>
+<div style="padding-left:3em">
+<p>null</p>
+base.Testbase.executeSelectQuery(Testbase.java:209)
+<br/>at testData.TestDataCreation.createPOSTBodyForReminder(TestDataCreation.java:68)
+<br/>at Exposure.RestAssured.ReminderTests.updateReminderWithoutInterfaceVersion_BEP14471002(ReminderTests.java:374)
+<br/>25 lines not shown
+</div>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<a id="m20"></a><h2>Exposure.RestAssured.ReminderTests:addReminderWithInterfaceVersion420_BEP14470004</h2>
+<div style="padding-left:3em">
+<p>expected:&lt;null&gt; but was:&lt;&gt;</p>
+org.testng.Assert.fail(Assert.java:89)
+<br/>at org.testng.Assert.failNotEquals(Assert.java:489)
+<br/>at org.testng.Assert.assertEquals(Assert.java:118)
+<br/>at org.testng.Assert.assertEquals(Assert.java:160)
+<br/>at Exposure.RestAssured.ReminderTests.addReminderWithInterfaceVersion420_BEP14470004(ReminderTests.java:107)
+<br/>25 lines not shown
+</div>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<a id="m21"></a><h2>Exposure.RestAssured.ReminderTests:updateReminderWhenInterfaceVersionLessThen420_BEP14471003</h2>
+<div style="padding-left:3em">
+<p>null</p>
+base.Testbase.executeSelectQuery(Testbase.java:209)
+<br/>at testData.TestDataCreation.createPOSTBodyForReminder(TestDataCreation.java:68)
+<br/>at Exposure.RestAssured.ReminderTests.updateReminderWhenInterfaceVersionLessThen420_BEP14471003(ReminderTests.java:387)
+<br/>25 lines not shown
+</div>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<a id="m22"></a><h2>Exposure.RestAssured.ReminderTests:updateReminderWithoutReminderTag_BEP14471009</h2>
+<div style="padding-left:3em">
+<p>null</p>
+base.Testbase.executeSelectQuery(Testbase.java:209)
+<br/>at testData.TestDataCreation.createPOSTBodyForReminder(TestDataCreation.java:68)
+<br/>at Exposure.RestAssured.ReminderTests.updateReminderWithoutReminderTag_BEP14471009(ReminderTests.java:458)
+<br/>25 lines not shown
+</div>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<a id="m23"></a><h2>Exposure.RestAssured.ReminderTests:addReminderWithInterfaceVersion520_BEP14470001</h2>
+<div style="padding-left:3em">
+<p>expected:&lt;null&gt; but was:&lt;&gt;</p>
+org.testng.Assert.fail(Assert.java:89)
+<br/>at org.testng.Assert.failNotEquals(Assert.java:489)
+<br/>at org.testng.Assert.assertEquals(Assert.java:118)
+<br/>at org.testng.Assert.assertEquals(Assert.java:160)
+<br/>at Exposure.RestAssured.ReminderTests.addReminderWithInterfaceVersion520_BEP14470001(ReminderTests.java:94)
+<br/>25 lines not shown
+</div>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<a id="m24"></a><h2>Exposure.RestAssured.ReminderTests:updateReminderWhenIcorrectSchTrailID_BEP144710018</h2>
+<div style="padding-left:3em">
+<p>null</p>
+base.Testbase.executeSelectQuery(Testbase.java:209)
+<br/>at testData.TestDataCreation.createPOSTBodyForReminder(TestDataCreation.java:68)
+<br/>at Exposure.RestAssured.ReminderTests.updateReminderWhenIcorrectSchTrailID_BEP144710018(ReminderTests.java:543)
+<br/>25 lines not shown
+</div>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<a id="m25"></a><h2>Exposure.RestAssured.ReminderTests:updateReminderWithBlankValueForReminderType_BEP14471008</h2>
+<div style="padding-left:3em">
+<p>null</p>
+base.Testbase.executeSelectQuery(Testbase.java:209)
+<br/>at testData.TestDataCreation.createPOSTBodyForReminder(TestDataCreation.java:68)
+<br/>at Exposure.RestAssured.ReminderTests.updateReminderWithBlankValueForReminderType_BEP14471008(ReminderTests.java:446)
+<br/>25 lines not shown
+</div>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<a id="m26"></a><h2>Exposure.RestAssured.ReminderTests:getReminderBTACall_BEP14477002</h2>
+<div style="padding-left:3em">
+<p>expected:&lt;Mandatory Parameter Interface Version missing&gt; but was:&lt;InterfaceVersion missing.&gt;</p>
+org.testng.Assert.fail(Assert.java:89)
+<br/>at org.testng.Assert.failNotEquals(Assert.java:489)
+<br/>at org.testng.Assert.assertEquals(Assert.java:118)
+<br/>at org.testng.Assert.assertEquals(Assert.java:160)
+<br/>at Exposure.RestAssured.ReminderTests.getReminderBTACall_BEP14477002(ReminderTests.java:304)
+<br/>25 lines not shown
+</div>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<a id="m27"></a><h2>Exposure.RestAssured.ReminderTests:addReminderWithoutInterfaceVersion_BEP14470002</h2>
+<div style="padding-left:3em">
+<p>expected:&lt;Mandatory Parameter Interface Version missing&gt; but was:&lt;InterfaceVersion missing.&gt;</p>
+org.testng.Assert.fail(Assert.java:89)
+<br/>at org.testng.Assert.failNotEquals(Assert.java:489)
+<br/>at org.testng.Assert.assertEquals(Assert.java:118)
+<br/>at org.testng.Assert.assertEquals(Assert.java:160)
+<br/>at Exposure.RestAssured.ReminderTests.addReminderWithoutInterfaceVersion_BEP14470002(ReminderTests.java:118)
+<br/>25 lines not shown
+</div>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<a id="m28"></a><h2>Exposure.RestAssured.ReminderTests:addReminderWhenIcorrectSchTrailID_BEP144700016</h2>
+<div style="padding-left:3em">
+<p>expected:&lt;Schedule Trail Id does not exists&gt; but was:&lt;Mandatory parameter is missing. Supported types are MAC, DeviceID, AccountNumber as request parameter or GID as request header.&gt;</p>
+org.testng.Assert.fail(Assert.java:89)
+<br/>at org.testng.Assert.failNotEquals(Assert.java:489)
+<br/>at org.testng.Assert.assertEquals(Assert.java:118)
+<br/>at org.testng.Assert.assertEquals(Assert.java:160)
+<br/>at Exposure.RestAssured.ReminderTests.addReminderWhenIcorrectSchTrailID_BEP144700016(ReminderTests.java:252)
+<br/>25 lines not shown
+</div>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<a id="m29"></a><h2>Exposure.RestAssured.ReminderTests:updateReminder_BEP14471001</h2>
+<div style="padding-left:3em">
+<p>null</p>
+base.Testbase.executeSelectQuery(Testbase.java:209)
+<br/>at testData.TestDataCreation.createPOSTBodyForReminder(TestDataCreation.java:68)
+<br/>at Exposure.RestAssured.ReminderTests.updateReminder_BEP14471001(ReminderTests.java:356)
+<br/>25 lines not shown
+</div>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<a id="m30"></a><h2>Exposure.RestAssured.ReminderTests:updateReminderWithoutMinsBeforeStartTag_BEP144710011</h2>
+<div style="padding-left:3em">
+<p>null</p>
+base.Testbase.executeSelectQuery(Testbase.java:209)
+<br/>at testData.TestDataCreation.createPOSTBodyForReminder(TestDataCreation.java:68)
+<br/>at Exposure.RestAssured.ReminderTests.updateReminderWithoutMinsBeforeStartTag_BEP144710011(ReminderTests.java:482)
+<br/>25 lines not shown
+</div>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<a id="m31"></a><h2>Exposure.RestAssured.ReminderTests:updateReminderWithBlankValueForChannelExtID_BEP144710014</h2>
+<div style="padding-left:3em">
+<p>null</p>
+base.Testbase.executeSelectQuery(Testbase.java:209)
+<br/>at testData.TestDataCreation.createPOSTBodyForReminder(TestDataCreation.java:68)
+<br/>at Exposure.RestAssured.ReminderTests.updateReminderWithBlankValueForChannelExtID_BEP144710014(ReminderTests.java:518)
+<br/>25 lines not shown
+</div>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<a id="m32"></a><h2>Exposure.RestAssured.ReminderTests:addReminderWithoutSchTrailIDTag_BEP144700012</h2>
+<div style="padding-left:3em">
+<p>expected:&lt;Schedule Trail Id tag is either missing/empty/incorrect&gt; but was:&lt;Mandatory parameter is missing. Supported types are MAC, DeviceID, AccountNumber as request parameter or GID as request header.&gt;</p>
+org.testng.Assert.fail(Assert.java:89)
+<br/>at org.testng.Assert.failNotEquals(Assert.java:489)
+<br/>at org.testng.Assert.assertEquals(Assert.java:118)
+<br/>at org.testng.Assert.assertEquals(Assert.java:160)
+<br/>at Exposure.RestAssured.ReminderTests.addReminderWithoutSchTrailIDTag_BEP144700012(ReminderTests.java:218)
+<br/>25 lines not shown
+</div>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<a id="m33"></a><h2>Exposure.RestAssured.ReminderTests:addReminderWithBlankValueForChannelExtID_BEP144700013</h2>
+<div style="padding-left:3em">
+<p>expected:&lt;Channel External Id tag is either missing/empty&gt; but was:&lt;Mandatory parameter is missing. Supported types are MAC, DeviceID, AccountNumber as request parameter or GID as request header.&gt;</p>
+org.testng.Assert.fail(Assert.java:89)
+<br/>at org.testng.Assert.failNotEquals(Assert.java:489)
+<br/>at org.testng.Assert.assertEquals(Assert.java:118)
+<br/>at org.testng.Assert.assertEquals(Assert.java:160)
+<br/>at Exposure.RestAssured.ReminderTests.addReminderWithBlankValueForChannelExtID_BEP144700013(ReminderTests.java:229)
+<br/>25 lines not shown
+</div>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<a id="m34"></a><h2>Exposure.RestAssured.ReminderTests:addReminderWithBlankValueForReminderType_BEP14470007</h2>
+<div style="padding-left:3em">
+<p>expected:&lt;Reminder Type tag is either missing or empty&gt; but was:&lt;Mandatory parameter is missing. Supported types are MAC, DeviceID, AccountNumber as request parameter or GID as request header.&gt;</p>
+org.testng.Assert.fail(Assert.java:89)
+<br/>at org.testng.Assert.failNotEquals(Assert.java:489)
+<br/>at org.testng.Assert.assertEquals(Assert.java:118)
+<br/>at org.testng.Assert.assertEquals(Assert.java:160)
+<br/>at Exposure.RestAssured.ReminderTests.addReminderWithBlankValueForReminderType_BEP14470007(ReminderTests.java:162)
+<br/>25 lines not shown
+</div>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<a id="m35"></a><h2>Exposure.RestAssured.ReminderTests:updateReminderWhenIcorrectChannelExtID_BEP144710019</h2>
+<div style="padding-left:3em">
+<p>null</p>
+base.Testbase.executeSelectQuery(Testbase.java:209)
+<br/>at testData.TestDataCreation.createPOSTBodyForReminder(TestDataCreation.java:68)
+<br/>at Exposure.RestAssured.ReminderTests.updateReminderWhenIcorrectChannelExtID_BEP144710019(ReminderTests.java:555)
+<br/>25 lines not shown
+</div>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<a id="m36"></a><h2>Exposure.RestAssured.ReminderTests:addReminderWhenIcorrectChannelExtID_BEP144700017</h2>
+<div style="padding-left:3em">
+<p>expected:&lt;Channel External Id does not exists&gt; but was:&lt;Mandatory parameter is missing. Supported types are MAC, DeviceID, AccountNumber as request parameter or GID as request header.&gt;</p>
+org.testng.Assert.fail(Assert.java:89)
+<br/>at org.testng.Assert.failNotEquals(Assert.java:489)
+<br/>at org.testng.Assert.assertEquals(Assert.java:118)
+<br/>at org.testng.Assert.assertEquals(Assert.java:160)
+<br/>at Exposure.RestAssured.ReminderTests.addReminderWhenIcorrectChannelExtID_BEP144700017(ReminderTests.java:263)
+<br/>25 lines not shown
+</div>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<a id="m37"></a><h2>Exposure.RestAssured.ReminderTests:addReminderWithBlankValueForSchTrailID_BEP144700011</h2>
+<div style="padding-left:3em">
+<p>expected:&lt;Schedule Trail Id tag is either missing/empty/incorrect&gt; but was:&lt;Mandatory parameter is missing. Supported types are MAC, DeviceID, AccountNumber as request parameter or GID as request header.&gt;</p>
+org.testng.Assert.fail(Assert.java:89)
+<br/>at org.testng.Assert.failNotEquals(Assert.java:489)
+<br/>at org.testng.Assert.assertEquals(Assert.java:118)
+<br/>at org.testng.Assert.assertEquals(Assert.java:160)
+<br/>at Exposure.RestAssured.ReminderTests.addReminderWithBlankValueForSchTrailID_BEP144700011(ReminderTests.java:207)
+<br/>25 lines not shown
+</div>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<a id="m38"></a><h2>Exposure.RestAssured.ReminderTests:addReminderWithoutMac_BEP14470005</h2>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<a id="m39"></a><h2>Exposure.RestAssured.ReminderTests:addReminderWithInvalidMac_BEP14470006</h2>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<a id="m40"></a><h2>Exposure.RestAssured.setConsentTest:setConsentTVTA_OPTIN_BEP1423001</h2>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<a id="m41"></a><h2>Exposure.RestAssured.ReminderTests:getReminderBTACall_BEP14477004</h2>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<a id="m42"></a><h2>Exposure.RestAssured.setConsentTest:setConsentTVReco_OPTIN_BEP1423002</h2>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<a id="m43"></a><h2>Exposure.RestAssured.setConsentTest:setConsentwithInvalidConsentType_BEP1423005</h2>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<a id="m44"></a><h2>Exposure.RestAssured.setConsentTest:setConsentwithInvalidConsentValue_BEP1423006</h2>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<a id="m45"></a><h2>Exposure.RestAssured.ReminderTests:getReminderBTACall_BEP14477005</h2>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<a id="m46"></a><h2>Exposure.RestAssured.setConsentTest:setConsentTVTA_OPTOUT_BEP1423003</h2>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<a id="m47"></a><h2>Exposure.RestAssured.setConsentTest:setConsentTVReco_OPTOUT_BEP1423004</h2>
+<p class="totop"><a href="#summary">back to summary</a></p>
+</body></html>

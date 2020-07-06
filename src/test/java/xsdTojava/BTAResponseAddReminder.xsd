@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+	<xs:include schemaLocation="BTATypesCommon.xsd"/>
+	<xs:annotation>
+		<xs:documentation>
+			description: Schema file for AddReminder
+			Applicable for BEP version: HE 4.0
+			version: 5.4.01
+			date: 2019-05-06
+			author: RSI
+			History: 
+			== BB 5.4.01: Removed Geolocate 
+			== RSI: Inital Version Created
+		</xs:documentation>
+	</xs:annotation>
+	<xs:element name="BTAResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="ID" type="T_ID">
+					<xs:annotation>
+						<xs:documentation>ID for added Reminder</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>
