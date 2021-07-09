@@ -1,0 +1,177 @@
+{
+  "id":55,
+  "name":"Recommended for you",
+  "externalId":"vod_recommend",
+  "itemType":{
+    "type":"CLUI",
+    "description":"Client UI"
+  },
+  "itemSubType":{
+    "subType":"N2SL",
+    "description":"NTE2 Hub Swimlane"
+  },
+  "coreItemLimit":10,
+  "minimumClientCaching":15,
+  "maximumClientCaching":60,
+  "ignoreIfTVRecoOptedOut":true,
+  "isHeroBanner":true,
+  "uiLanguage":"nl",
+  "queries":[
+    {
+      "id":20,
+      "swimlaneSection":"coreSection",
+      "type":"TA",
+      "name":"PROX_UC_101",
+      "displayName":"VoD-Recommended for you",
+      "sortOrderInSection":1,
+      "parameters":[
+        {
+          "name":"clientType",
+          "displayName":"Client Type",
+          "selector":"Client Type",
+          "responsible":{
+            "value":"clientToken"
+          },
+          "value":"%(clientType)s",
+          "sortOrder":0,
+          "id":20
+        },
+        {
+          "name":"optedOut",
+          "displayName":"Opted Out",
+          "selector":"Opted Out",
+          "responsible":{
+            "value":"BepToken"
+          },
+          "value":"%(OPTOUT)b",
+          "sortOrder":0,
+          "id":21
+        }
+      ],
+      "staticTiles":[
+        {
+          "id":21,
+          "name":"Movies",
+          "externalId":"Movies",
+          "sortOrderInQuery":1,
+          "isQueryDefault":true,
+          "imageFileName":"exploreCatbgPoster.jpg",
+          "displayNames":[
+            {
+              "id":2,
+              "languageType":"nl",
+              "displayName":"Films"
+            },
+            {
+              "id":3,
+              "languageType":"en",
+              "displayName":"Movies"
+            }
+          ],
+          "parameters":[
+            {
+              "name":"apExtId",
+              "displayName":"Access Point Ext.ID",
+              "selector":"Select AccessPoint",
+              "responsible":{
+                "value":"BepAdmin"
+              },
+              "value":"CatWall_EPG_Movies",
+              "sortOrder":0,
+              "id":200
+            }
+          ]
+        }
+      ],
+      "showTile":true
+    },
+    {
+      "swimlaneSection":"startTile",
+      "type":"Client",
+      "name":"noStart",
+      "displayName":"none",
+      "id":935,
+      "sortOrderInSection":1
+    },
+    {
+      "swimlaneSection":"endTile",
+      "type":"Client",
+      "name":"goVodCat",
+      "displayName":"VOD category",
+      "sortOrderInSection":1,
+      "imageFileName":"endTile.jpg",
+      "parameters":[
+        {
+          "name":"CatExtId",
+          "displayName":"Category (ext. id)",
+          "selector":"Set value",
+          "responsible":{
+            "value":"BepAdmin"
+          },
+          "value":"12255588",
+          "sortOrder":0
+        }
+      ],
+      "id":538
+    },
+    {
+      "id":50,
+      "swimlaneSection":"contentWall",
+      "type":"TA",
+      "name":"PROX_UC_999",
+      "displayName":"VoD-Recommended for you by Page Size",
+      "sortOrderInSection":1,
+      "isSectionDefault":true,
+      "useCoreDefaultParams":true,
+      "pageSize":20,
+      "displayNames":[
+        {
+          "id":2,
+          "languageType":"nl",
+          "displayName":"Aanbevolen voor jou"
+        }
+      ],
+      "parameters":[
+        {
+          "name":"startResults",
+          "displayName":"ThAn pagination offset",
+          "selector":"Client Listpage offset",
+          "responsible":{
+            "value":"clientToken"
+          },
+          "value":"%(listOffset)i",
+          "sortOrder":1,
+          "id":200
+        },
+        {
+          "name":"maxResults",
+          "displayName":"ThAn page size",
+          "selector":"Client page size",
+          "responsible":{
+            "value":"clientToken"
+          },
+          "value":"%(pageSize)i",
+          "sortOrder":2,
+          "id":201
+        }
+      ]
+    }
+  ],
+  "displayNames":[
+    {
+      "id":25,
+      "languageType":"nl",
+      "displayName":"Aanbevolen voor jou"
+    }
+  ],
+  "clientUiLayouts":[
+    {
+      "targetScreen":"tv",
+      "clientUiLayout":"Client UI Layout TV"
+    },
+    {
+      "targetScreen":"phone",
+      "clientUiLayout":"Client UI Layout phone"
+    }
+  ]
+}

@@ -3,14 +3,17 @@
 <suite name="Failed suite [Default suite]">
   <test name="Default test(failed)" preserve-order="true">
     <classes>
-      <class name="Exposure.RestAssured.setConsentTest">
+      <class name="Exposure.RestAssured.WishlistTests">
         <methods>
+          <include name="getWishList_BEP14477001"/>
           <include name="beforeTest"/>
           <include name="afterSuite"/>
-          <include name="setConsentTVTA_OPTIN_BEP1423001"/>
+          <include name="afterTest"/>
+          <include name="addToWishlistWithGroupId_CR1006001"/>
           <include name="beforeSuite"/>
+          <include name="addToWishlistWithoutGroupId_CR1006003"/>
         </methods>
-      </class> <!-- Exposure.RestAssured.setConsentTest -->
+      </class> <!-- Exposure.RestAssured.WishlistTests -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

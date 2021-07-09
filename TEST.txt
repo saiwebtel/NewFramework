@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<BTAResponse>
+    <ERROR>
+        <ErrorCode>0xbe100016</ErrorCode>
+        <ErrorDescription>An Error occurred in MDS.</ErrorDescription>
+    </ERROR>
+</BTAResponse>

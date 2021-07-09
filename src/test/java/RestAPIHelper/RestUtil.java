@@ -5,7 +5,11 @@ import io.restassured.response.Response;
 
 import java.util.Map;
 
-public class RestUtil {
+import org.json.simple.JSONObject;
+
+import model.Consent;
+
+public class RestUtil{
 	public static Response sendPostAPI(String postBody,Map<String,String> headerValues,Map<String,String> queryParams ){
 		Response response = 	
 				given().
@@ -24,6 +28,26 @@ public class RestUtil {
 				queryParam(queryParam).				
 				when().
 				post();
+		return response;
+	}
+	public static Response sendPutAPI(String postBody,Map<String,String> headerValues,String queryParam ){
+		Response response = 	
+				given().
+				headers(headerValues).
+				body(postBody).log().all().
+				queryParam(queryParam).				
+				when().
+				put();
+		return response;
+	}
+	public static Response sendPutAPI(JSONObject postBody,Map<String,String> headerValues ){
+		Response response = 	
+				given().
+				headers(headerValues).
+				body(postBody).log().all().
+				//queryParam(queryParam).				
+				when().
+				put();
 		return response;
 	}
 	public static Response sendGetAPI(String contentType,Map<String,String> queryParams ){

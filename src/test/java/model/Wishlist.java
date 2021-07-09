@@ -3,7 +3,7 @@ package model;
 import javax.xml.bind.annotation.XmlElement;
 
 //@XmlRootElement(name="AddUserWishListDoc")
-public class Wishlist {
+public class Wishlist{
 	private String VoDExtID;
 	private String ID;
 

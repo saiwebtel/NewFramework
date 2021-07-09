@@ -20,59 +20,18 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import testData.QueryRepository;
 import testData.TestDataCreation;
 import RestAPIHelper.RestUtil;
 import base.Testbase;
 import dbConnection.DataBaseConnection;
 
+import org.apache.log4j.BasicConfigurator;
+import org.apache.log4j.Logger;
+
 public class ReminderTests extends Testbase {
 	TestDataCreation testdatacreation=new TestDataCreation();
-	public static String query;
-	public static String deleteQuery;
-	public static String selectQuery;
-	public static String updateQuery;
-	public static String reminderData;
-	public static Map<String, String> queryData;
-	ReminderTests() throws SQLException
-	{
-		query="SELECT STB.MACADDRESS, DTV.EXTERNALID, SFS.SCHEDULETRAILID FROM subscribers s,customer_na@TO_UUSD cna,"
-				+ "SETTOPBOXES STB,subscriberpackages sp, packageitems pi,dtvchannels dtv,schedulefilespec sfs "
-				+ "WHERE S.ID = CNA.SUBSCRIBER_ID "
-				+ "AND S.ID = STB.ASSIGNEDTOSUBSCRIBERID "
-				+ "AND SP.SUBSCRIBERID = S.ID "
-				+ "AND SP.PACKAGEID = PI.PACKAGEID "
-				+ "AND PI.ITEMID = DTV.ID "
-				+ "AND DTV.CHANNELREFERENCENO = SFS.CHANNELREFERENCENUMBER "
-				+ "AND S.STATUS = 'Active' "
-				+ "AND S.STATUSCODE = 'A' "
-				+ "AND STB.STATUS='Assigned'  "
-				+ "AND STB.RECORDSTATUSCODE='A' "
-				+ "AND STARTDATETIME>sysdate "
-				+ "AND rownum < 100 order by SFS.SCHEDULETRAILID desc";
-		updateQuery="SELECT STB.MACADDRESS, DTV.ID,DTV.EXTERNALID,SFS.PROGRAMREFERENCENUMBER,SFS.CHANNELREFERENCENUMBER, SFS.SCHEDULETRAILID "
-				+ "FROM subscribers s,customer_na@TO_UUSD cna,"
-				+ "SETTOPBOXES STB,subscriberpackages sp, packageitems pi,dtvchannels dtv,schedulefilespec sfs "
-				+ "WHERE S.ID = CNA.SUBSCRIBER_ID "
-				+ "AND S.ID = STB.ASSIGNEDTOSUBSCRIBERID "
-				+ "AND SP.SUBSCRIBERID = S.ID "
-				+ "AND SP.PACKAGEID = PI.PACKAGEID "
-				+ "AND PI.ITEMID = DTV.ID "
-				+ "AND DTV.CHANNELREFERENCENO = SFS.CHANNELREFERENCENUMBER "
-				+ "AND S.STATUS = 'Active' "
-				+ "AND S.STATUSCODE = 'A' "
-				+ "AND STB.STATUS='Assigned'  "
-				+ "AND STB.RECORDSTATUSCODE='A' "
-				+ "AND STARTDATETIME>sysdate "
-				+ "AND rownum < 500 order by SFS.SCHEDULETRAILID desc";
-		queryData=getRecordFromTable(query,"TM");
-		deleteQuery="delete from SETTOPBOXREMINDERS WHERE MACADDRESS="+"'"+queryData.get("MACADDRESS")+"'";
-		//deleteQuery="delete from SETTOPBOXREMINDERS WHERE MACADDRESS="+"'"+getRecordFromTable(query,"TM").get("MACADDRESS")+"'";
-		reminderData="SELECT * FROM SETTOPBOXREMINDERS WHERE SETTOPBOXREMINDERS.REMINDERCREATIONDATETIME IS NOT NULL "
-				+ "and SETTOPBOXREMINDERS.REMINDERCREATIONDATETIME>sysdate";
-		
-	}
-	
-	
+	public static final Logger logger = Logger.getLogger(ReminderTests.class);
 	@BeforeMethod
 	public void beforeTest() throws SQLException
 	{
@@ -81,37 +40,36 @@ public class ReminderTests extends Testbase {
 
 	}
 	@Test(priority=1)
-
 	public void addReminderWithInterfaceVersion520_BEP14470001() throws JAXBException, ClassNotFoundException, SQLException, IOException 
 	{	
-		//Removing already existing record	
-			removeRecordFromTable(deleteQuery,"TM");
+		//Removing already existing record
+   		    logger.info("Removing PreExisting data from table");
+			removeRecordFromTable(QueryRepository.Reminder.deleteQuery,"TM");
 		//Sending Request
-			Response response =  RestUtil.sendPostAPI(testdatacreation.createPOSTBodyForReminder("addReminder"), headerValues(), queryParams(query,"TM"));
+			Response response =  RestUtil.sendPostAPI(testdatacreation.createPOSTBodyForReminder("addReminder"), headerValues("BTA"), queryParams(QueryRepository.Reminder.query,"TM"));
 			System.out.println(response.prettyPrint());
 		//Validating Response
 			Assert.assertEquals(response.getStatusCode(), 200);
-			Assert.assertEquals(response.getBody().xmlPath().get("BTAResponse.ID"),getRecordFromTable(reminderData,"TM").get("REMINDERID"));
-			Assert.assertEquals("Reminder",getRecordFromTable(reminderData,"TM").get("REMINDERTYPE"));
-			
+			Assert.assertEquals(response.getBody().xmlPath().get("BTAResponse.ID"),executeSelectQuery(QueryRepository.Reminder.reminderData,"TM").get("REMINDERID"));
+			Assert.assertEquals("Reminder",executeSelectQuery(QueryRepository.Reminder.reminderData,"TM").get("REMINDERTYPE"));			
 	}
 	 @Test(priority=2)
 	public void addReminderWithInterfaceVersion420_BEP14470004() throws JAXBException, FileNotFoundException,ClassNotFoundException, SQLException 
 	{
-		 	removeRecordFromTable(deleteQuery,"TM");
-		 	queryParams(query,"TM").put("InterfaceVersion", "4.2.0");
-		 	Response response =  RestUtil.sendPostAPI(testdatacreation.createPOSTBodyForReminder("addReminder"), headerValues(), queryParams(query,"TM"));
+		 	removeRecordFromTable(QueryRepository.Reminder.deleteQuery,"TM");
+		 	queryParams(QueryRepository.Reminder.query,"TM").put("InterfaceVersion", "4.2.0");
+		 	Response response =  RestUtil.sendPostAPI(testdatacreation.createPOSTBodyForReminder("addReminder"), headerValues("BTA"), queryParams(QueryRepository.Reminder.query,"TM"));
 			System.out.println(response.prettyPrint());
 			//Validating Response
 			Assert.assertEquals(response.getStatusCode(), 200);
-			Assert.assertEquals(response.getBody().xmlPath().get("BTAResponse.ID"),getRecordFromTable(reminderData,"TM").get("REMINDERID"));
-			Assert.assertEquals("Reminder",getRecordFromTable(reminderData,"TM").get("REMINDERTYPE"));
+			Assert.assertEquals(response.getBody().xmlPath().get("BTAResponse.ID"),executeSelectQuery(QueryRepository.Reminder.reminderData,"TM").get("REMINDERID"));
+			Assert.assertEquals("Reminder",executeSelectQuery(QueryRepository.Reminder.reminderData,"TM").get("REMINDERTYPE"));
 	}
 	 @Test(priority=3)
 		public void addReminderWithoutInterfaceVersion_BEP14470002() throws JAXBException, FileNotFoundException,ClassNotFoundException, SQLException 
 		{
-		 	queryParams(query,"TM").remove("InterfaceVersion");
-		 	Response response =  RestUtil.sendPostAPI(testdatacreation.createPOSTBodyForReminder("addReminder"), headerValues(), queryParams);
+		 	queryParams(QueryRepository.Reminder.query,"TM").remove("InterfaceVersion");
+		 	Response response =  RestUtil.sendPostAPI(testdatacreation.createPOSTBodyForReminder("addReminder"), headerValues("BTA"), queryParams);
 			System.out.println(response.prettyPrint());
 			//Validating Response
 			Assert.assertEquals(response.getStatusCode(), 200);
@@ -120,8 +78,8 @@ public class ReminderTests extends Testbase {
 	 @Test(priority=4)
 		public void addReminderWithInterfaceVersionLessThan420_BEP14470003() throws JAXBException, FileNotFoundException,ClassNotFoundException, SQLException 
 		{
-		 	queryParams(query,"TM").put("InterfaceVersion", "4.1.0");
-		 	Response response =  RestUtil.sendPostAPI(testdatacreation.createPOSTBodyForReminder("addReminder"), headerValues(), queryParams);
+		 	queryParams(QueryRepository.Reminder.query,"TM").put("InterfaceVersion", "4.1.0");
+		 	Response response =  RestUtil.sendPostAPI(testdatacreation.createPOSTBodyForReminder("addReminder"), headerValues("BTA"), queryParams);
 			System.out.println(response.prettyPrint());
 			//Validating Response
 			Assert.assertEquals(response.getStatusCode(), 200);
@@ -130,8 +88,8 @@ public class ReminderTests extends Testbase {
 	 @Test(priority=5)
 		public void addReminderWithoutMac_BEP14470005() throws JAXBException, FileNotFoundException,ClassNotFoundException, SQLException 
 		{
-		 	queryParams(query,"TM").remove("MAC");
-		 	Response response =  RestUtil.sendPostAPI(testdatacreation.createPOSTBodyForReminder("addReminder"), headerValues(), queryParams);
+		 	queryParams(QueryRepository.Reminder.query,"TM").remove("MAC");
+		 	Response response =  RestUtil.sendPostAPI(testdatacreation.createPOSTBodyForReminder("addReminder"), headerValues("BTA"), queryParams);
 			System.out.println(response.prettyPrint());
 			//Validating Response
 			Assert.assertEquals(response.getStatusCode(), 200);
@@ -141,8 +99,8 @@ public class ReminderTests extends Testbase {
 		public void addReminderWithInvalidMac_BEP14470006() throws JAXBException, FileNotFoundException,ClassNotFoundException, SQLException 
 		{
 		 	//Sending Request
-		 	queryParams(query,"TM").put("MAC","24374CFFD3FATEST");
-			Response response =  RestUtil.sendPostAPI(testdatacreation.createPOSTBodyForReminder("addReminder"), headerValues(), queryParams);
+		 	queryParams(QueryRepository.Reminder.query,"TM").put("MAC","24374CFFD3FATEST");
+			Response response =  RestUtil.sendPostAPI(testdatacreation.createPOSTBodyForReminder("addReminder"), headerValues("BTA"), queryParams);
 			System.out.println(response.prettyPrint());
 			//Validating Response
 			Assert.assertEquals(response.getStatusCode(), 200);
@@ -155,7 +113,7 @@ public class ReminderTests extends Testbase {
 			String postBody = testdatacreation.createPOSTBodyForReminder("addReminder").replaceAll("<ReminderType>Reminder</ReminderType>", "<ReminderType></ReminderType>");
 			System.out.println("FINAL BODY IS ====="+postBody);
 			//Sending Request
-			Response response =  RestUtil.sendPostAPI(postBody, headerValues(), queryParams(query,"TM"));
+			Response response =  RestUtil.sendPostAPI(postBody, headerValues("BTA"), queryParams(QueryRepository.Reminder.query,"TM"));
 			System.out.println(response.prettyPrint());
 			//Validating Response
 			Assert.assertEquals(response.getStatusCode(), 200);
@@ -167,7 +125,7 @@ public class ReminderTests extends Testbase {
 		 	String postBody = testdatacreation.createPOSTBodyForReminder("addReminder").replaceAll("<ReminderType>Reminder</ReminderType>", "");
 			System.out.println("FINAL BODY IS ====="+postBody);
 			//Sending Request
-			Response response =  RestUtil.sendPostAPI(postBody, headerValues(), queryParams(query,"TM"));
+			Response response =  RestUtil.sendPostAPI(postBody, headerValues("BTA"), queryParams(QueryRepository.Reminder.query,"TM"));
 			System.out.println(response.prettyPrint());
 			//Validating Response
 			Assert.assertEquals(response.getStatusCode(), 200);
@@ -178,7 +136,7 @@ public class ReminderTests extends Testbase {
 		{
 			String postBody = testdatacreation.createPOSTBodyForReminder("addReminder").replaceAll("<MinsBeforeStart>8</MinsBeforeStart>", "<MinsBeforeStart></MinsBeforeStart>");
 			//Sending Request
-			Response response =  RestUtil.sendPostAPI(postBody, headerValues(), queryParams(query,"TM"));
+			Response response =  RestUtil.sendPostAPI(postBody, headerValues("BTA"), queryParams(QueryRepository.Reminder.query,"TM"));
 			System.out.println(response.prettyPrint());
 			//Validating Response
 			Assert.assertEquals(response.getStatusCode(), 200);
@@ -189,7 +147,7 @@ public class ReminderTests extends Testbase {
 		{
 		 	String postBody = testdatacreation.createPOSTBodyForReminder("addReminder").replaceAll("<MinsBeforeStart>8</MinsBeforeStart>", "");
 			//Sending Request
-			Response response =  RestUtil.sendPostAPI(postBody, headerValues(), queryParams(query,"TM"));
+			Response response =  RestUtil.sendPostAPI(postBody, headerValues("BTA"), queryParams(QueryRepository.Reminder.query,"TM"));
 			System.out.println(response.prettyPrint());
 			//Validating Response
 			Assert.assertEquals(response.getStatusCode(), 200);
@@ -198,9 +156,9 @@ public class ReminderTests extends Testbase {
 	 @Test(priority=11)
 		public void addReminderWithBlankValueForSchTrailID_BEP144700011() throws JAXBException, FileNotFoundException,ClassNotFoundException, SQLException 
 		{
-		 	String postBody=testdatacreation.createPOSTBodyForReminder("addReminder").replaceAll("<SchTrailID>"+getRecordFromTable(query,"TM").get("SCHEDULETRAILID")+"</SchTrailID>", "<SchTrailID></SchTrailID>");
+		 	String postBody=testdatacreation.createPOSTBodyForReminder("addReminder").replaceAll("<SchTrailID>"+executeSelectQuery(QueryRepository.Reminder.query,"TM").get("SCHEDULETRAILID")+"</SchTrailID>", "<SchTrailID></SchTrailID>");
 		 //Sending Request
-			Response response =  RestUtil.sendPostAPI(postBody, headerValues(), queryParams(query,"TM"));
+			Response response =  RestUtil.sendPostAPI(postBody, headerValues("BTA"), queryParams(QueryRepository.Reminder.query,"TM"));
 			System.out.println(response.prettyPrint());
 		//Validating Response
 			Assert.assertEquals(response.getStatusCode(), 200);
@@ -209,9 +167,9 @@ public class ReminderTests extends Testbase {
 	 @Test(priority=12)
 		public void addReminderWithoutSchTrailIDTag_BEP144700012() throws JAXBException, FileNotFoundException,ClassNotFoundException, SQLException 
 		{
-		 	String postBody=testdatacreation.createPOSTBodyForReminder("addReminder").replaceAll("<SchTrailID>"+getRecordFromTable(query,"TM").get("SCHEDULETRAILID")+"</SchTrailID>", "");
+		 	String postBody=testdatacreation.createPOSTBodyForReminder("addReminder").replaceAll("<SchTrailID>"+executeSelectQuery(QueryRepository.Reminder.query,"TM").get("SCHEDULETRAILID")+"</SchTrailID>", "");
 		 //Sending Request
-			Response response =  RestUtil.sendPostAPI(postBody, headerValues(), queryParams(query,"TM"));
+			Response response =  RestUtil.sendPostAPI(postBody, headerValues("BTA"), queryParams(QueryRepository.Reminder.query,"TM"));
 			System.out.println(response.prettyPrint());
 		//Validating Response
 			Assert.assertEquals(response.getStatusCode(), 200);
@@ -220,9 +178,9 @@ public class ReminderTests extends Testbase {
 	 @Test(priority=13)
 		public void addReminderWithBlankValueForChannelExtID_BEP144700013() throws JAXBException, FileNotFoundException,ClassNotFoundException, SQLException 
 		{
-		 	String postBody=testdatacreation.createPOSTBodyForReminder("addReminder").replaceAll("<ChannelExtID>"+getRecordFromTable(query,"TM").get("EXTERNALID")+"</ChannelExtID>", "<ChannelExtID></ChannelExtID>");
+		 	String postBody=testdatacreation.createPOSTBodyForReminder("addReminder").replaceAll("<ChannelExtID>"+executeSelectQuery(QueryRepository.Reminder.query,"TM").get("EXTERNALID")+"</ChannelExtID>", "<ChannelExtID></ChannelExtID>");
 			//Sending Request
-			Response response =  RestUtil.sendPostAPI(postBody, headerValues(), queryParams(query,"TM"));
+			Response response =  RestUtil.sendPostAPI(postBody, headerValues("BTA"), queryParams(QueryRepository.Reminder.query,"TM"));
 			System.out.println(response.prettyPrint());
 			//Validating Response
 			Assert.assertEquals(response.getStatusCode(), 200);
@@ -231,9 +189,9 @@ public class ReminderTests extends Testbase {
 	 @Test(priority=14)
 		public void addReminderWithoutChannelExtID_BEP144700014() throws JAXBException, FileNotFoundException,ClassNotFoundException, SQLException 
 		{
-		 	String postBody=testdatacreation.createPOSTBodyForReminder("addReminder").replaceAll("<ChannelExtID>"+getRecordFromTable(query,"TM").get("EXTERNALID")+"</ChannelExtID>", "");
+		 	String postBody=testdatacreation.createPOSTBodyForReminder("addReminder").replaceAll("<ChannelExtID>"+executeSelectQuery(QueryRepository.Reminder.query,"TM").get("EXTERNALID")+"</ChannelExtID>", "");
 			//Sending Request
-			Response response =  RestUtil.sendPostAPI(postBody, headerValues(), queryParams(query,"TM"));
+			Response response =  RestUtil.sendPostAPI(postBody, headerValues("BTA"), queryParams(QueryRepository.Reminder.query,"TM"));
 			System.out.println(response.prettyPrint());
 			//Validating Response
 			Assert.assertEquals(response.getStatusCode(), 200);
@@ -243,9 +201,9 @@ public class ReminderTests extends Testbase {
 	 @Test(priority=15)
 		public void addReminderWhenIcorrectSchTrailID_BEP144700016() throws JAXBException, FileNotFoundException,ClassNotFoundException, SQLException 
 		{
-		 	String postBody=testdatacreation.createPOSTBodyForReminder("addReminder").replaceAll("<SchTrailID>"+getRecordFromTable(query,"TM").get("SCHEDULETRAILID")+"</SchTrailID>", "<SchTrailID>"+getRecordFromTable(query,"TM").get("SCHEDULETRAILID")+"99"+"</SchTrailID>");
+		 	String postBody=testdatacreation.createPOSTBodyForReminder("addReminder").replaceAll("<SchTrailID>"+executeSelectQuery(QueryRepository.Reminder.query,"TM").get("SCHEDULETRAILID")+"</SchTrailID>", "<SchTrailID>"+executeSelectQuery(QueryRepository.Reminder.query,"TM").get("SCHEDULETRAILID")+"99"+"</SchTrailID>");
 		 	//Sending Request
-			Response response =  RestUtil.sendPostAPI(postBody, headerValues(), queryParams(query,"TM"));
+			Response response =  RestUtil.sendPostAPI(postBody, headerValues("BTA"), queryParams(QueryRepository.Reminder.query,"TM"));
 			System.out.println(response.prettyPrint());
 			//Validating Response
 			Assert.assertEquals(response.getStatusCode(), 200);
@@ -254,9 +212,9 @@ public class ReminderTests extends Testbase {
 	 @Test(priority=16)
 		public void addReminderWhenIcorrectChannelExtID_BEP144700017() throws JAXBException, FileNotFoundException,ClassNotFoundException, SQLException 
 		{			
-			String postBody=testdatacreation.createPOSTBodyForReminder("addReminder").replaceAll("<ChannelExtID>"+getRecordFromTable(query,"TM").get("EXTERNALID")+"</ChannelExtID>", "<ChannelExtID>"+getRecordFromTable(query,"TM").get("EXTERNALID")+"99"+"</ChannelExtID>");
+			String postBody=testdatacreation.createPOSTBodyForReminder("addReminder").replaceAll("<ChannelExtID>"+executeSelectQuery(QueryRepository.Reminder.query,"TM").get("EXTERNALID")+"</ChannelExtID>", "<ChannelExtID>"+executeSelectQuery(QueryRepository.Reminder.query,"TM").get("EXTERNALID")+"99"+"</ChannelExtID>");
 			//Sending Request
-			Response response =  RestUtil.sendPostAPI(postBody, headerValues(), queryParams(query,"TM"));
+			Response response =  RestUtil.sendPostAPI(postBody, headerValues("BTA"), queryParams(QueryRepository.Reminder.query,"TM"));
 			System.out.println(response.prettyPrint());
 			//Validating Response
 			Assert.assertEquals(response.getStatusCode(), 200);
@@ -267,7 +225,7 @@ public class ReminderTests extends Testbase {
 		{
 			String postBody=testdatacreation.createPOSTBodyForReminder("addReminder").replaceAll("<MinsBeforeStart>8</MinsBeforeStart>", "<MinsBeforeStart>101</MinsBeforeStart>");
 			//Sending Request
-			Response response =  RestUtil.sendPostAPI(postBody, headerValues(), queryParams(query,"TM"));
+			Response response =  RestUtil.sendPostAPI(postBody, headerValues("BTA"), queryParams(QueryRepository.Reminder.query,"TM"));
 			System.out.println(response.prettyPrint());
 			//Validating Response
 
@@ -280,14 +238,14 @@ public class ReminderTests extends Testbase {
 		 	RestAssured.basePath = "/broker/bta/getReminders";		 	
 		 	//QueryParams
 		 	Map<String, String> queryParams = new HashMap<String, String>();
-			queryParams.put("MAC", getRecordFromTable(reminderData,"TM").get("MACADDRESS"));
+			queryParams.put("MAC", executeSelectQuery(QueryRepository.Reminder.reminderData,"TM").get("MACADDRESS"));
 			queryParams.put("InterfaceVersion", "4.2.0");		
 			//Sending Request
 			Response response =  RestUtil.sendGetAPI("application/xml", queryParams);
 			//Validating Response
 			Assert.assertEquals(response.getStatusCode(), 200);
 			System.out.println(response.asString());		
-			Assert.assertEquals(response.getBody().xmlPath().get("BTAResponse.Reminders.Reminder.ID"),getRecordFromTable(reminderData,"TM").get("REMINDERID"));			
+			Assert.assertEquals(response.getBody().xmlPath().get("BTAResponse.Reminders.Reminder.ID"),executeSelectQuery(QueryRepository.Reminder.reminderData,"TM").get("REMINDERID"));			
 	 }
 	  @Test(priority=19)
 	  public void getReminderBTACall_BEP14477002() throws SQLException, ClassNotFoundException
@@ -295,7 +253,7 @@ public class ReminderTests extends Testbase {
 			 	RestAssured.basePath = "/broker/bta/getReminders";		 	
 			 	//QueryParams
 			 	Map<String, String> queryParams = new HashMap<String, String>();
-				queryParams.put("MAC", getRecordFromTable(reminderData,"TM").get("MACADDRESS"));	
+				queryParams.put("MAC", executeSelectQuery(QueryRepository.Reminder.reminderData,"TM").get("MACADDRESS"));	
 				//Sending Request
 				Response response =  RestUtil.sendGetAPI("application/xml", queryParams);
 				//Validating Response
@@ -309,7 +267,7 @@ public class ReminderTests extends Testbase {
 			 	RestAssured.basePath = "/broker/bta/getReminders";		 	
 			 	//QueryParams
 			 	Map<String, String> queryParams = new HashMap<String, String>();
-				queryParams.put("MAC", getRecordFromTable(reminderData,"TM").get("MACADDRESS"));	
+				queryParams.put("MAC", executeSelectQuery(QueryRepository.Reminder.reminderData,"TM").get("MACADDRESS"));	
 				queryParams.put("InterfaceVersion", "4.1.0");
 				//Sending Request
 				Response response =  RestUtil.sendGetAPI("application/xml", queryParams);
@@ -324,7 +282,7 @@ public class ReminderTests extends Testbase {
 			 	RestAssured.basePath = "/broker/bta/getReminders";		 	
 			 	//QueryParams
 			 	Map<String, String> queryParams = new HashMap<String, String>();
-				queryParams.put("MAC", getRecordFromTable(reminderData,"TM").get("MACADDRESS")+"TEST");	
+				queryParams.put("MAC", executeSelectQuery(QueryRepository.Reminder.reminderData,"TM").get("MACADDRESS")+"TEST");	
 				queryParams.put("InterfaceVersion", "4.2.0");
 				//Sending Request
 				Response response =  RestUtil.sendGetAPI("application/xml", queryParams);
@@ -353,25 +311,25 @@ public class ReminderTests extends Testbase {
 		{
 		  	RestAssured.basePath = "/broker/bta/updateReminder";
 			//Sending Request
-			Response response =  RestUtil.sendPostAPI(testdatacreation.createPOSTBodyForReminder("updateReminder"), headerValues(), queryParams(updateQuery,"TM"));
+			Response response =  RestUtil.sendPostAPI(testdatacreation.createPOSTBodyForReminder("updateReminder"), headerValues("BTA"), queryParams(QueryRepository.Reminder.updateQuery,"TM"));
 			/*System.out.println(response.prettyPrint());
 			//Validating Response
 			Assert.assertEquals(response.getStatusCode(), 200);
 			Assert.assertEquals(response.getBody().xmlPath().get("BTAResponse.Status"),"Success");
-			Assert.assertEquals("Autotune",getRecordFromTable(reminderData,"TM").get("REMINDERTYPE"));
-			Assert.assertEquals("10",getRecordFromTable(reminderData,"TM").get("REMINDERMINUTESBEFORESTART"),"Paased");
-			Assert.assertEquals(getRecordFromTable(updateQuery,"TM").get("PROGRAMREFERENCENUMBER"),getRecordFromTable(reminderData,"TM").get("PROGRAMREFERENCENUMBER"));
-			Assert.assertEquals(getRecordFromTable(updateQuery,"TM").get("CHANNELREFERENCENUMBER"),getRecordFromTable(reminderData,"TM").get("CHANNELREFERENCENUMBER"));
-			Assert.assertEquals(getRecordFromTable(updateQuery,"TM").get("ID"),getRecordFromTable(reminderData,"TM").get("REALCHANNELIDS"));
+			Assert.assertEquals("Autotune",executeSelectQuery(reminderData,"TM").get("REMINDERTYPE"));
+			Assert.assertEquals("10",executeSelectQuery(reminderData,"TM").get("REMINDERMINUTESBEFORESTART"),"Paased");
+			Assert.assertEquals(executeSelectQuery(updateQuery,"TM").get("PROGRAMREFERENCENUMBER"),executeSelectQuery(reminderData,"TM").get("PROGRAMREFERENCENUMBER"));
+			Assert.assertEquals(executeSelectQuery(updateQuery,"TM").get("CHANNELREFERENCENUMBER"),executeSelectQuery(reminderData,"TM").get("CHANNELREFERENCENUMBER"));
+			Assert.assertEquals(executeSelectQuery(updateQuery,"TM").get("ID"),executeSelectQuery(reminderData,"TM").get("REALCHANNELIDS"));
 */			
 		}
 	  @Test(priority=24)
 		public void updateReminderWithoutInterfaceVersion_BEP14471002() throws JAXBException, FileNotFoundException,ClassNotFoundException, SQLException 
 		{
-		  	queryParams(query,"TM").remove("InterfaceVersion");	
+		  	queryParams(QueryRepository.Reminder.query,"TM").remove("InterfaceVersion");	
 		  	RestAssured.basePath = "/broker/bta/updateReminder";
 			//Sending Request
-			Response response =  RestUtil.sendPostAPI(testdatacreation.createPOSTBodyForReminder("updateReminder"), headerValues(), queryParams);
+			Response response =  RestUtil.sendPostAPI(testdatacreation.createPOSTBodyForReminder("updateReminder"), headerValues("BTA"), queryParams);
 			System.out.println(response.prettyPrint());
 			//Validating Response
 
@@ -381,10 +339,10 @@ public class ReminderTests extends Testbase {
 	  @Test(priority=25)
 		public void updateReminderWhenInterfaceVersionLessThen420_BEP14471003() throws JAXBException, FileNotFoundException,ClassNotFoundException, SQLException 
 		{
-		  	queryParams(query,"TM").put("InterfaceVersion", "4.1.0");
+		  	queryParams(QueryRepository.Reminder.query,"TM").put("InterfaceVersion", "4.1.0");
 		  	RestAssured.basePath = "/broker/bta/updateReminder";
 			//Sending Request
-			Response response =  RestUtil.sendPostAPI(testdatacreation.createPOSTBodyForReminder("updateReminder"), headerValues(), queryParams);
+			Response response =  RestUtil.sendPostAPI(testdatacreation.createPOSTBodyForReminder("updateReminder"), headerValues("BTA"), queryParams);
 			System.out.println(response.prettyPrint());
 			//Validating Response
 
@@ -394,10 +352,10 @@ public class ReminderTests extends Testbase {
 	  @Test(priority=26)
 		public void updateReminderWithoutMac_BEP14471004() throws JAXBException, FileNotFoundException,ClassNotFoundException, SQLException 
 		{
-		  	queryParams(query,"TM").remove("MAC");
+		  	queryParams(QueryRepository.Reminder.query,"TM").remove("MAC");
 		  	RestAssured.basePath = "/broker/bta/updateReminder";
 			//Sending Request
-			Response response =  RestUtil.sendPostAPI(testdatacreation.createPOSTBodyForReminder("updateReminder"), headerValues(), queryParams);
+			Response response =  RestUtil.sendPostAPI(testdatacreation.createPOSTBodyForReminder("updateReminder"), headerValues("BTA"), queryParams);
 			System.out.println(response.prettyPrint());
 			//Validating Response
 			Assert.assertEquals(response.getStatusCode(), 200);
@@ -406,10 +364,10 @@ public class ReminderTests extends Testbase {
 	  @Test(priority=27)
 		public void updateReminderWithInvalidMac_BEP14471005() throws JAXBException, FileNotFoundException,ClassNotFoundException, SQLException 
 		{
-		  	queryParams(query,"TM").put("MAC","24374CFFD3FATEST");
+		  	queryParams(QueryRepository.Reminder.query,"TM").put("MAC","24374CFFD3FATEST");
 		  	RestAssured.basePath = "/broker/bta/updateReminder";
 			//Sending Request
-			Response response =  RestUtil.sendPostAPI(testdatacreation.createPOSTBodyForReminder("updateReminder"), headerValues(), queryParams);
+			Response response =  RestUtil.sendPostAPI(testdatacreation.createPOSTBodyForReminder("updateReminder"), headerValues("BTA"), queryParams);
 			System.out.println(response.prettyPrint());
 			//Validating Response
 			Assert.assertEquals(response.getStatusCode(), 200);
@@ -420,8 +378,8 @@ public class ReminderTests extends Testbase {
 		{
 		  	RestAssured.basePath = "/broker/bta/updateReminder";
 			//Sending Request
-		  	String postBody=testdatacreation.createPOSTBodyForReminder("updateReminder").replaceAll("<ID>"+getRecordFromTable(reminderData,"TM").get("REMINDERID")+"</ID>", "<ID></ID>");;
-			Response response =  RestUtil.sendPostAPI(postBody, headerValues(), queryParams(updateQuery,"TM"));
+		  	String postBody=testdatacreation.createPOSTBodyForReminder("updateReminder").replaceAll("<ID>"+executeSelectQuery(QueryRepository.Reminder.reminderData,"TM").get("REMINDERID")+"</ID>", "<ID></ID>");;
+			Response response =  RestUtil.sendPostAPI(postBody, headerValues("BTA"), queryParams(QueryRepository.Reminder.updateQuery,"TM"));
 			System.out.println(response.prettyPrint());
 			//Validating Response
 			Assert.assertEquals(response.getStatusCode(), 200);
@@ -432,8 +390,8 @@ public class ReminderTests extends Testbase {
 		{
 		  	RestAssured.basePath = "/broker/bta/updateReminder";
 			//Sending Request
-		  	String postBody=testdatacreation.createPOSTBodyForReminder("updateReminder").replaceAll("<ID>"+getRecordFromTable(reminderData,"TM").get("REMINDERID")+"</ID>", "");;
-			Response response =  RestUtil.sendPostAPI(postBody, headerValues(), queryParams(updateQuery,"TM"));
+		  	String postBody=testdatacreation.createPOSTBodyForReminder("updateReminder").replaceAll("<ID>"+executeSelectQuery(QueryRepository.Reminder.reminderData,"TM").get("REMINDERID")+"</ID>", "");;
+			Response response =  RestUtil.sendPostAPI(postBody, headerValues("BTA"), queryParams(QueryRepository.Reminder.updateQuery,"TM"));
 			System.out.println(response.prettyPrint());
 			//Validating Response
 			Assert.assertEquals(response.getStatusCode(), 200);
@@ -445,7 +403,7 @@ public class ReminderTests extends Testbase {
 		  	RestAssured.basePath = "/broker/bta/updateReminder";
 			String postBody = testdatacreation.createPOSTBodyForReminder("updateReminder").replaceAll("<ReminderType>Autotune</ReminderType>", "<ReminderType></ReminderType>");
 			//Sending Request
-			Response response =  RestUtil.sendPostAPI(postBody, headerValues(), queryParams(updateQuery,"TM"));
+			Response response =  RestUtil.sendPostAPI(postBody, headerValues("BTA"), queryParams(QueryRepository.Reminder.updateQuery,"TM"));
 			System.out.println(response.prettyPrint());
 			//Validating Response
 			Assert.assertEquals(response.getStatusCode(), 200);
@@ -457,7 +415,7 @@ public class ReminderTests extends Testbase {
 		 RestAssured.basePath = "/broker/bta/updateReminder";	
 		 String postBody = testdatacreation.createPOSTBodyForReminder("updateReminder").replaceAll("<ReminderType>Autotune</ReminderType>", "");
 			//Sending Request
-			Response response =  RestUtil.sendPostAPI(postBody, headerValues(), queryParams(updateQuery,"TM"));
+			Response response =  RestUtil.sendPostAPI(postBody, headerValues("BTA"), queryParams(QueryRepository.Reminder.updateQuery,"TM"));
 			System.out.println(response.prettyPrint());
 			//Validating Response
 			Assert.assertEquals(response.getStatusCode(), 200);
@@ -469,7 +427,7 @@ public class ReminderTests extends Testbase {
 		 	RestAssured.basePath = "/broker/bta/updateReminder";
 		 	String postBody = testdatacreation.createPOSTBodyForReminder("updateReminder").replaceAll("<MinsBeforeStart>10</MinsBeforeStart>", "<MinsBeforeStart></MinsBeforeStart>");
 			//Sending Request
-			Response response =  RestUtil.sendPostAPI(postBody, headerValues(), queryParams(updateQuery,"TM"));
+			Response response =  RestUtil.sendPostAPI(postBody, headerValues("BTA"), queryParams(QueryRepository.Reminder.updateQuery,"TM"));
 			System.out.println(response.prettyPrint());
 			//Validating Response
 			Assert.assertEquals(response.getStatusCode(), 200);
@@ -481,7 +439,7 @@ public class ReminderTests extends Testbase {
 		 	RestAssured.basePath = "/broker/bta/updateReminder";
 		 	String postBody = testdatacreation.createPOSTBodyForReminder("updateReminder").replaceAll("<MinsBeforeStart>10</MinsBeforeStart>", "");
 			//Sending Request
-			Response response =  RestUtil.sendPostAPI(postBody, headerValues(), queryParams(updateQuery,"TM"));
+			Response response =  RestUtil.sendPostAPI(postBody, headerValues("BTA"), queryParams(QueryRepository.Reminder.updateQuery,"TM"));
 			System.out.println(response.prettyPrint());
 			//Validating Response
 			Assert.assertEquals(response.getStatusCode(), 200);
@@ -491,9 +449,9 @@ public class ReminderTests extends Testbase {
 		public void updateReminderWithBlankValueForSchTrailID_BEP144710012() throws JAXBException, FileNotFoundException,ClassNotFoundException, SQLException 
 		{
 		 	RestAssured.basePath = "/broker/bta/updateReminder";
-		 	String postBody=testdatacreation.createPOSTBodyForReminder("updateReminder").replaceAll("<SchTrailID>"+getRecordFromTable(updateQuery,"TM").get("SCHEDULETRAILID")+"</SchTrailID>", "<SchTrailID></SchTrailID>");
+		 	String postBody=testdatacreation.createPOSTBodyForReminder("updateReminder").replaceAll("<SchTrailID>"+executeSelectQuery(QueryRepository.Reminder.updateQuery,"TM").get("SCHEDULETRAILID")+"</SchTrailID>", "<SchTrailID></SchTrailID>");
 		 //Sending Request
-			Response response =  RestUtil.sendPostAPI(postBody, headerValues(), queryParams(updateQuery,"TM"));
+			Response response =  RestUtil.sendPostAPI(postBody, headerValues("BTA"), queryParams(QueryRepository.Reminder.updateQuery,"TM"));
 			System.out.println(response.prettyPrint());
 		//Validating Response
 			Assert.assertEquals(response.getStatusCode(), 200);
@@ -503,9 +461,9 @@ public class ReminderTests extends Testbase {
 		public void updateReminderWithoutSchTrailIDTag_BEP144710013() throws JAXBException, FileNotFoundException,ClassNotFoundException, SQLException 
 		{
 		 	RestAssured.basePath = "/broker/bta/updateReminder";
-		 	String postBody=testdatacreation.createPOSTBodyForReminder("updateReminder").replaceAll("<SchTrailID>"+getRecordFromTable(updateQuery,"TM").get("SCHEDULETRAILID")+"</SchTrailID>", "");
+		 	String postBody=testdatacreation.createPOSTBodyForReminder("updateReminder").replaceAll("<SchTrailID>"+executeSelectQuery(QueryRepository.Reminder.updateQuery,"TM").get("SCHEDULETRAILID")+"</SchTrailID>", "");
 		 //Sending Request
-			Response response =  RestUtil.sendPostAPI(postBody, headerValues(), queryParams(updateQuery,"TM"));
+			Response response =  RestUtil.sendPostAPI(postBody, headerValues("BTA"), queryParams(QueryRepository.Reminder.updateQuery,"TM"));
 			System.out.println(response.prettyPrint());
 		//Validating Response
 			Assert.assertEquals(response.getStatusCode(), 200);
@@ -515,9 +473,9 @@ public class ReminderTests extends Testbase {
 		public void updateReminderWithBlankValueForChannelExtID_BEP144710014() throws JAXBException, FileNotFoundException,ClassNotFoundException, SQLException 
 		{
 		 	RestAssured.basePath = "/broker/bta/updateReminder";	
-		 	String postBody=testdatacreation.createPOSTBodyForReminder("updateReminder").replaceAll("<ChannelExtID>"+getRecordFromTable(updateQuery,"TM").get("EXTERNALID")+"</ChannelExtID>", "<ChannelExtID></ChannelExtID>");
+		 	String postBody=testdatacreation.createPOSTBodyForReminder("updateReminder").replaceAll("<ChannelExtID>"+executeSelectQuery(QueryRepository.Reminder.updateQuery,"TM").get("EXTERNALID")+"</ChannelExtID>", "<ChannelExtID></ChannelExtID>");
 			//Sending Request
-			Response response =  RestUtil.sendPostAPI(postBody, headerValues(), queryParams(updateQuery,"TM"));
+			Response response =  RestUtil.sendPostAPI(postBody, headerValues("BTA"), queryParams(QueryRepository.Reminder.updateQuery,"TM"));
 			System.out.println(response.prettyPrint());
 			//Validating Response
 			Assert.assertEquals(response.getStatusCode(), 200);
@@ -527,9 +485,9 @@ public class ReminderTests extends Testbase {
 		public void updateReminderWithoutChannelExtID_BEP144710015() throws JAXBException, FileNotFoundException,ClassNotFoundException, SQLException 
 		{
 		 	RestAssured.basePath = "/broker/bta/updateReminder";
-		 	String postBody=testdatacreation.createPOSTBodyForReminder("updateReminder").replaceAll("<ChannelExtID>"+getRecordFromTable(updateQuery,"TM").get("EXTERNALID")+"</ChannelExtID>", "");
+		 	String postBody=testdatacreation.createPOSTBodyForReminder("updateReminder").replaceAll("<ChannelExtID>"+executeSelectQuery(QueryRepository.Reminder.updateQuery,"TM").get("EXTERNALID")+"</ChannelExtID>", "");
 			//Sending Request
-			Response response =  RestUtil.sendPostAPI(postBody, headerValues(), queryParams(updateQuery,"TM"));
+			Response response =  RestUtil.sendPostAPI(postBody, headerValues("BTA"), queryParams(QueryRepository.Reminder.updateQuery,"TM"));
 			System.out.println(response.prettyPrint());
 			//Validating Response
 			Assert.assertEquals(response.getStatusCode(), 200);
@@ -540,9 +498,9 @@ public class ReminderTests extends Testbase {
 		public void updateReminderWhenIcorrectSchTrailID_BEP144710018() throws JAXBException, FileNotFoundException,ClassNotFoundException, SQLException 
 		{
 		 	RestAssured.basePath = "/broker/bta/updateReminder";	
-		 	String postBody=testdatacreation.createPOSTBodyForReminder("updateReminder").replaceAll("<SchTrailID>"+getRecordFromTable(updateQuery,"TM").get("SCHEDULETRAILID")+"</SchTrailID>", "<SchTrailID>"+getRecordFromTable(updateQuery,"TM").get("SCHEDULETRAILID")+"99"+"</SchTrailID>");
+		 	String postBody=testdatacreation.createPOSTBodyForReminder("updateReminder").replaceAll("<SchTrailID>"+executeSelectQuery(QueryRepository.Reminder.updateQuery,"TM").get("SCHEDULETRAILID")+"</SchTrailID>", "<SchTrailID>"+executeSelectQuery(QueryRepository.Reminder.updateQuery,"TM").get("SCHEDULETRAILID")+"99"+"</SchTrailID>");
 		 	//Sending Request
-			Response response =  RestUtil.sendPostAPI(postBody, headerValues(), queryParams(updateQuery,"TM"));
+			Response response =  RestUtil.sendPostAPI(postBody, headerValues("BTA"), queryParams(QueryRepository.Reminder.updateQuery,"TM"));
 			System.out.println(response.prettyPrint());
 			//Validating Response
 			Assert.assertEquals(response.getStatusCode(), 200);
@@ -552,9 +510,9 @@ public class ReminderTests extends Testbase {
 		public void updateReminderWhenIcorrectChannelExtID_BEP144710019() throws JAXBException, FileNotFoundException,ClassNotFoundException, SQLException 
 		{			
 		 	RestAssured.basePath = "/broker/bta/updateReminder";
-		 	String postBody=testdatacreation.createPOSTBodyForReminder("updateReminder").replaceAll("<ChannelExtID>"+getRecordFromTable(updateQuery,"TM").get("EXTERNALID")+"</ChannelExtID>", "<ChannelExtID>"+getRecordFromTable(updateQuery,"TM").get("EXTERNALID")+"99"+"</ChannelExtID>");
+		 	String postBody=testdatacreation.createPOSTBodyForReminder("updateReminder").replaceAll("<ChannelExtID>"+executeSelectQuery(QueryRepository.Reminder.updateQuery,"TM").get("EXTERNALID")+"</ChannelExtID>", "<ChannelExtID>"+executeSelectQuery(QueryRepository.Reminder.updateQuery,"TM").get("EXTERNALID")+"99"+"</ChannelExtID>");
 			//Sending Request
-			Response response =  RestUtil.sendPostAPI(postBody, headerValues(), queryParams(updateQuery,"TM"));
+			Response response =  RestUtil.sendPostAPI(postBody, headerValues("BTA"), queryParams(QueryRepository.Reminder.updateQuery,"TM"));
 			System.out.println(response.prettyPrint());
 			//Validating Response
 			Assert.assertEquals(response.getStatusCode(), 200);
@@ -566,7 +524,7 @@ public class ReminderTests extends Testbase {
 		 	RestAssured.basePath = "/broker/bta/updateReminder";	
 		 	String postBody=testdatacreation.createPOSTBodyForReminder("updateReminder").replaceAll("<MinsBeforeStart>10</MinsBeforeStart>", "<MinsBeforeStart>101</MinsBeforeStart>");
 			//Sending Request
-			Response response =  RestUtil.sendPostAPI(postBody, headerValues(), queryParams(updateQuery,"TM"));
+			Response response =  RestUtil.sendPostAPI(postBody, headerValues("BTA"), queryParams(QueryRepository.Reminder.updateQuery,"TM"));
 			System.out.println(response.prettyPrint());
 			//Validating Response
 			Assert.assertEquals(response.getStatusCode(), 200);
@@ -576,9 +534,9 @@ public class ReminderTests extends Testbase {
 		public void updateReminderWhenIcorrectSchTrailID_BEP144710021() throws JAXBException, FileNotFoundException,ClassNotFoundException, SQLException 
 		{
 		 	RestAssured.basePath = "/broker/bta/updateReminder";	
-		 	String postBody=testdatacreation.createPOSTBodyForReminder("updateReminder").replaceAll("<ID>"+getRecordFromTable(reminderData,"TM").get("REMINDERID")+"</ID>", "<ID>"+getRecordFromTable(reminderData,"TM").get("REMINDERID")+"99"+"</ID>");
+		 	String postBody=testdatacreation.createPOSTBodyForReminder("updateReminder").replaceAll("<ID>"+executeSelectQuery(QueryRepository.Reminder.reminderData,"TM").get("REMINDERID")+"</ID>", "<ID>"+executeSelectQuery(QueryRepository.Reminder.reminderData,"TM").get("REMINDERID")+"99"+"</ID>");
 		 	//Sending Request
-			Response response =  RestUtil.sendPostAPI(postBody, headerValues(), queryParams(updateQuery,"TM"));
+			Response response =  RestUtil.sendPostAPI(postBody, headerValues("BTA"), queryParams(QueryRepository.Reminder.updateQuery,"TM"));
 			System.out.println(response.prettyPrint());
 			//Validating Response
 			Assert.assertEquals(response.getStatusCode(), 200);

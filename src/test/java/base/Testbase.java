@@ -25,14 +25,6 @@ import org.testng.annotations.BeforeSuite;
 import dbConnection.DataBaseConnection;
 public class Testbase 
 {
-	public static String DbIp=getTMDBIP().split(",")[0];
-	public static String TmDbUserName=getDBUserName().split(",")[0];
-	public static String TmDbPassword=getDBPassword().split(",")[0];
-	public static String ComicDbUserName=getDBUserName().split(",")[1];
-	public static String ComicDbPassword=getDBPassword().split(",")[1];
-	public static String UusdDbUserName=getDBUserName().split(",")[2];
-	public static String UusdDbPassword=getDBPassword().split(",")[2];	
-	public static String ServiceName=getDBServiceName().split(",")[0];
 	public static String RequestServerIp=getRequestServerIP();
 	public static String RequestServerPort=getRequestServerPORT();
 	public HashMap<String,String> requestType;
@@ -57,45 +49,46 @@ public class Testbase
 		requestType.put("SETCONSENT", "setConsent");
 		requestType.put("ADDWISHLIST", "addWishlist");
 		requestType.put("DELETEWISHLIST", "deleteWishlist");
+		requestType.put("CREATESWIMLANE", "deleteWishlist");
 		
 		return requestType;
 	}
-	public HashMap<String,String> headerValues()
+	public HashMap<String,String> headerValues(String requestType)
 	{
 		headerValues=new HashMap<>();
+		if(requestType.equalsIgnoreCase("REST"))
+		headerValues.put("Content-Type", "application/json");
+		headerValues.put("Authorization", "Basic dmFpYmhhdjpjMWE4ZTA1OWJmZDFlOTExY2YxMGI2MjYzNDBjOWE1NA==");
+		if(requestType.equalsIgnoreCase("BTA"))
 		headerValues.put("Content-Type", "application/xml");
+		
 		return headerValues;
 	}
 	public HashMap<String,String> queryParams(String query,String DBName)
 	{
 		queryParams=new HashMap<>();		
 		try {
-				queryParams.put("MAC", getRecordFromTable(query,DBName).get("MACADDRESS"));
-				
-				
+				queryParams.put("MAC", executeSelectQuery(query,DBName).get("MACADDRESS"));
+				if(queryParams.containsValue(null))
+				{
+					System.out.println("MAC is empty as data not available in table");
+					System.exit(0);
+				}				
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		queryParams.put("InterfaceVersion", "5.2.0");
 		return queryParams;
 	}
-	public Map<String, String> getRecordFromTable(String query,String DBName) throws SQLException
-	{
-		Map<String, String> testData=new HashMap<>();
-		testData= Testbase.executeSelectQuery(query,DBName);	
-		//removeRecordFromTable(ReminderTests.deleteQuery);		
-		return testData;
-	}
-
 	public void removeRecordFromTable(String query,String DBName) throws SQLException 
 	{
 		Statement statement = null;
 		try{
 			if(DBName.equalsIgnoreCase("TM")){
-				statement = DataBaseConnection.getDBConnection(DbIp,TmDbUserName,TmDbPassword,ServiceName).createStatement();}
+				statement = DataBaseConnection.getInstance().getDBConnection("TM").createStatement();}
 			else if(DBName.equalsIgnoreCase("COMIC")){
-				statement = DataBaseConnection.getDBConnection(DbIp,ComicDbUserName,ComicDbPassword,ServiceName).createStatement();}
+				DataBaseConnection.getInstance();
+				statement = DataBaseConnection.getInstance().getDBConnection("COMIC").createStatement();}
 			statement.executeQuery(query);
 		    }
 	     
@@ -106,21 +99,7 @@ public class Testbase
 			statement.close();
 			DataBaseConnection.closeConnection();
 		}
-	}
-
-	public boolean checkIfRecordExist(String Query,String DBName) throws SQLException
-	{
-		boolean record=true;
-		Map<String, String> resultSetMap=new HashMap<>();
-		resultSetMap=executeSelectQuery(Query, DBName);
-		if(resultSetMap.size()!=0)
-		{
-			record=false;
-		}
-		
-		return record;
-	}
-	
+	}	
 	public static Properties getUpdatedProptiesFile() {
 		Properties property = new Properties();
 		FileInputStream FIS;
@@ -128,12 +107,11 @@ public class Testbase
 			FIS = new FileInputStream(System.getProperty("user.dir") +"/src/test/java/config/configuration.properties");
 			property.load(FIS);
 		} catch (IOException e) {
-
 			e.printStackTrace();
 		}
-
 		return property;
 	}
+	
 	public static String getTMDBIP()
 	{
 		return getUpdatedProptiesFile().getProperty("Db_Ip");
@@ -142,13 +120,33 @@ public class Testbase
 	{
 		return getUpdatedProptiesFile().getProperty("Db_Service_Name");
 	}
-	public static String getDBUserName()
+	public static String getDBUserName(String dbUserName)
 	{
-		return getUpdatedProptiesFile().getProperty("Db_Username");
+		String dbUsername="";
+		if (dbUserName == "TM") {
+			dbUsername = getUpdatedProptiesFile().getProperty("Db_Username");
+		} else if (dbUserName == "UUSD") {
+			dbUsername = getUpdatedProptiesFile().getProperty("UUSDDB_Username");
+		} else if (dbUserName == "COMIC") {
+			dbUsername = getUpdatedProptiesFile().getProperty("COMICDB_Username");
+		} else {
+			System.out.println("INCORRECT USERNAME");
+		}		
+		return dbUsername;
 	}
-	public static String getDBPassword()
+	public static String getDBPassword(String dbPassWord)
 	{
-		return getUpdatedProptiesFile().getProperty("Db_Password");
+		String dbPassword="";
+		if (dbPassWord.equalsIgnoreCase("TM")) {
+			dbPassword = getUpdatedProptiesFile().getProperty("Db_Password");
+		} else if (dbPassWord.equalsIgnoreCase("UUSD")) {
+			dbPassword = getUpdatedProptiesFile().getProperty("UUSDDB_Password");
+		} else if (dbPassWord.equalsIgnoreCase("COMIC")) {
+			dbPassword = getUpdatedProptiesFile().getProperty("COMICDB_Password");
+		} else {
+			System.out.println("INCORRECT PASSWORD");
+		}
+		return dbPassword;
 	}
 	public static String getRequestServerIP()
 	{
@@ -164,43 +162,27 @@ public class Testbase
 	
 	}
 	public static Map<String, String> executeSelectQuery(String sqlQuery, String DBName) throws SQLException {
-
 		Map<String, String> resultData = new HashMap<String, String>();
 		Statement statement = null;
 		ResultSet resultset = null;
 		ResultSetMetaData resultColumn = null;
 		try {
-			if(DBName.equalsIgnoreCase("TM"))
-			{
-			statement = DataBaseConnection.getDBConnection(DbIp,TmDbUserName,TmDbPassword,ServiceName).createStatement();
-			}
+			if(DBName.equalsIgnoreCase("TM")){
+			statement = DataBaseConnection.getInstance().getDBConnection("TM").createStatement();}
 			else if(DBName.equalsIgnoreCase("COMIC")){
-			statement = DataBaseConnection.getDBConnection(DbIp, ComicDbUserName, ComicDbPassword, ServiceName).createStatement();
-			}
+			statement = DataBaseConnection.getInstance().getDBConnection("COMIC").createStatement();}
 			else if(DBName.equalsIgnoreCase("UUSD")){
-				statement = DataBaseConnection.getDBConnection(DbIp, UusdDbUserName, UusdDbPassword, ServiceName).createStatement();
-				}
-			else
-			{
-				System.out.println("Wrong DB Name");
+			statement = DataBaseConnection.getInstance().getDBConnection("UUSD").createStatement();}
+			else{System.out.println("Wrong DB Name");
 			}
+			System.out.println("QUERY=>"+sqlQuery);
 			resultset = statement.executeQuery(sqlQuery);
 			resultColumn = resultset.getMetaData();
-			int noOfColumns = resultColumn.getColumnCount();
-			System.out.println("NUMBER OF COLUmNS ARE="+noOfColumns);
 			resultset.next();
-			for (int x = 1; x <= noOfColumns; x++) {
-				System.out.println(resultColumn.getColumnName(x) + " ------> "+ resultset.getString(x));
+			for (int x = 1; x <= resultColumn.getColumnCount(); x++) {
 				resultData.put(resultColumn.getColumnName(x),resultset.getString(x));
-				//resultset.next();
-				
-			}
-			/*File file=new File("data");
-	        FileWriter fw=new FileWriter(file.getAbsoluteFile());
-	        BufferedWriter bw=new BufferedWriter(fw);
-	        bw.write(resultData.toString());
-	        bw.close();*/
-	        
+				System.out.println(resultData.put(resultColumn.getColumnName(x),resultset.getString(x)));	
+			}        
 			} catch (Exception ex) {
 			System.out.println(ex.getMessage());
 			} finally 
@@ -209,64 +191,11 @@ public class Testbase
 			resultset.close();
 			DataBaseConnection.closeConnection();
 			}
+			if (resultData.size()== 0) {
+				System.out.println("Record not exist in table");
+				System.exit(0);}
 			return resultData;
-
-	}
-	public void storeDataInPojo(String Query ,String DBName) throws ClassNotFoundException, SQLException
-	{
-		Statement statement = null;
-		ResultSet resultset = null;
-		try{
-		
-		if(DBName.equalsIgnoreCase("TM"))
-		{
-		statement = DataBaseConnection.getDBConnection(DbIp,TmDbUserName,TmDbPassword,ServiceName).createStatement();
-		}
-		else if(DBName.equalsIgnoreCase("COMIC")){
-		statement = DataBaseConnection.getDBConnection(DbIp, ComicDbUserName, ComicDbPassword, ServiceName).createStatement();
-		}
-		else
-		{
-			System.out.println("Query or DB Name is not correct");
-		}
-		resultset = statement.executeQuery(Query);
-		while(resultset.next())
-		{
-			consent=new Consent();
-			consent.setID(resultset.getInt(1));
-			consent.setTVID(resultset.getString(2));
-			consent.setConsentType(resultset.getString(3));
-			consent.setConsentValue(resultset.getString(4));
-			consent.setConsentStatus(resultset.getString(5));
-			consent.setLastUpdatedOn(resultset.getLong(6));
-			consent.setLastUpdatedBy(resultset.getString(7));
-			consent.setConsentMessage(resultset.getString(8));
-			consent.setLastDerivedOn(resultset.getInt(9));
-			consent.setRDSRetryCounter(resultset.getInt(10));
-			consent.setConsentFeedback(resultset.getInt(11));
-			System.out.println("CONSENT TYPE IS="+consent.getConsentType());
-		}}
-		catch(Exception e)
-		{
-			
-		}
-		finally
-		{
-			statement.close();
-			resultset.close();
-			DataBaseConnection.closeConnection();
-		}
-		
-	}
-	public static void main(String[] args) throws SQLException, ClassNotFoundException 
-	{
-			Testbase ts=new Testbase();
-			//database=new DataBaseConnection();
-			//System.out.println(ts.checkIfRecordExist("select * from settopboxreminders where MACADDRESS='24374CFFD3FA'"));
-			//System.out.println(ts.getReminderDataFromSETTOPBOXREMINDERSTable().get("MACADDRESS"));
-			//ts.storeDataInPojo("select * fom consents where TVID=014372354", "COMIC");
-	}
-	
+	}	
 }
 
 

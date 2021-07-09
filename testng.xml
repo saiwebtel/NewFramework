@@ -1,17 +1,20 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Suite">
-  <listeners>
-		<listener class-name="ExtentReport.ExtentReportListner" />
-	</listeners>
-	<test name="Test">
-    <classes>
-      <!--class name="Exposure.RestAssured.ReminderTests"/-->
-      <!--class name="Exposure.RestAssured.setConsentTest"/-->
-      <!--class name="Exposure.RestAssured.WishlistTest"/-->
-      	<methods>
-				<include name="addReminderWithInterfaceVersion520_BEP14470001"/>
-		</methods>
-    </classes>
-  </test> <!-- Test -->
-</suite> <!-- Suite -->
+
+	<suite name="Suite">
+		<listeners>
+			<listener class-name="ExtentReport.ExtentReportListner" />
+		</listeners>
+		<test name="Test">
+			<classes>
+				<!--class name="Exposure.RestAssured.ReminderTests"/-->
+				<class name="Exposure.RestAssured.setConsentTest"/>
+				<!--class name="Exposure.RestAssured.WishlistTests"/-->
+				<!--class name="Exposure.RestAssured.Swimlanes"/-->
+				<methods>
+					<include name="createSwimlaneWithClientUILayouts_BEP2036301"/>
+					<include name="createSwimlaneWithClientUILayouts_BEP2036302"/>
+				</methods>
+			</classes>
+		</test>
+		<!-- Test -->
+	</suite>
+	<!-- Suite -->
